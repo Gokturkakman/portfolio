@@ -1,0 +1,382 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   INK & EMBER — tasarım sistemi
+   Sıcak isli-siyah zemin, kor turuncusu vurgu, kâğıt beyazı metin.
+   Açık temada aynı palet "mürekkep üstü kâğıt" olarak yeniden okunur.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Yüzeyler — mavi-siyah değil, sıcak isli siyah */
+  --ink-000: #080807;
+  --ink-050: #0d0c0a;
+  --ink-100: #141210;
+  --ink-200: #1c1917;
+  --ink-300: #262220;
+
+  /* Metin */
+  --paper: #f4efe6;
+  --paper-dim: #a89e92;
+  --paper-faint: #6c6259;
+
+  /* Vurgular */
+  --ember: #e8853a;
+  --saffron: #f2c14e;
+
+  /* Türetilmiş */
+  --bg: var(--ink-000);
+  --bg-raised: var(--ink-100);
+  --bg-sunken: var(--ink-050);
+  --fg: var(--paper);
+  --fg-dim: var(--paper-dim);
+  --fg-faint: var(--paper-faint);
+  --line: rgb(244 239 230 / 0.09);
+  --line-strong: rgb(244 239 230 / 0.17);
+  --accent: var(--ember);
+  --accent-2: var(--saffron);
+  --moss: #4fae95;
+  --glow: rgb(232 133 58 / 0.26);
+  --selection: rgb(232 133 58 / 0.3);
+  --grain-opacity: 0.055;
+
+  /* Hareket — tek yerden kontrol */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur: 340ms;
+  --dur-slow: 720ms;
+
+  /* Ölçü */
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f6f2ea;
+  --bg-raised: #fffdf8;
+  --bg-sunken: #efe9df;
+  --fg: #17130f;
+  --fg-dim: #5c5349;
+  --fg-faint: #8d8377;
+  --line: rgb(23 19 15 / 0.1);
+  --line-strong: rgb(23 19 15 / 0.19);
+  --ember: #c25f14;
+  --accent: #c25f14;
+  --accent-2: #a8760a;
+  --moss: #2c7f68;
+  --glow: rgb(194 95 20 / 0.16);
+  --selection: rgb(194 95 20 / 0.2);
+  --grain-opacity: 0.045;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-sunken: var(--bg-sunken);
+  --color-fg: var(--fg);
+  --color-fg-dim: var(--fg-dim);
+  --color-fg-faint: var(--fg-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-moss: var(--moss);
+
+  --font-sans: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-var), ui-monospace, monospace;
+  --font-display: var(--font-display-var), Georgia, serif;
+}
+
+/* ==========================================================================
+   Temel
+   ========================================================================== */
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans-var), ui-sans-serif, system-ui, sans-serif;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  transition:
+    background-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--fg);
+}
+
+/* Zemin dokusu — düz siyahın "ucuz" görünmesini engeller.
+   Not: `mix-blend-mode` bilerek kullanılmıyor. Tam ekran sabit bir katmanda
+   blend modu tüm sayfayı tek bir kompozisyon katmanına zorluyor; bazı
+   GPU'larda kaydırma takılıyor, bazılarında sayfa hiç boyanmıyor. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Odak halkası — klavyeyle gezenler için net */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-sunken);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 99px;
+  border: 3px solid var(--bg-sunken);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ==========================================================================
+   Tipografi
+   ========================================================================== */
+
+.text-display {
+  font-family: var(--font-display-var), Georgia, serif;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.028em;
+}
+
+.text-eyebrow {
+  font-family: var(--font-mono-var), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+
+.accent-italic {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Yüzeyler
+   ========================================================================== */
+
+.surface {
+  /* Bulanıklık desteklenmeyen tarayıcılarda arkadaki metin okunmasın diye
+     temel opaklık yüksek tutuluyor; blur yalnızca üstüne katılan bir zenginlik. */
+  background: color-mix(in oklab, var(--bg-raised) 96%, transparent);
+  border: 1px solid var(--line);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .surface {
+    background: color-mix(in oklab, var(--bg-raised) 86%, transparent);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  }
+}
+
+.rule {
+  height: 1px;
+  background: linear-gradient(to right, var(--line-strong), transparent 72%);
+}
+
+.ember-glow {
+  position: relative;
+  isolation: isolate;
+}
+.ember-glow::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, var(--glow), transparent 62%);
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out);
+  pointer-events: none;
+}
+.ember-glow:hover::after {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Animasyonlar
+   ========================================================================== */
+
+/* Parçacık hero'nun düz metin yedeği. Parçacıklar çizilmeye başlayınca
+   `particles-live` eklenir ve başlık yalnızca ekran okuyucular için kalır. */
+.particles-live h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Hero girişi — CSS ile, JS'e bağlı değil. `both` sayesinde animasyon
+   çalışmasa bile öğe son (görünür) durumunda kalır. */
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.intro {
+  animation: intro-rise 0.8s var(--ease-out) both;
+  animation-delay: var(--intro-delay, 0s);
+}
+
+/* Reveal — JS yalnızca sınıf ekliyor, geçiş burada.
+   `reveal-armed` gelmezse blok zaten görünür durumda kalır. */
+.reveal-armed {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-y, 20px), 0);
+  will-change: opacity, transform;
+}
+.reveal-armed.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.72s var(--ease-out) var(--reveal-delay, 0s),
+    transform 0.72s var(--ease-out) var(--reveal-delay, 0s);
+}
+
+@keyframes ember-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-caret {
+  animation: caret 1.05s steps(1) infinite;
+}
+.animate-marquee {
+  animation: marquee 46s linear infinite;
+}
+.status-dot {
+  animation: ember-pulse 2.6s var(--ease-in-out) infinite;
+}
+.scroll-hint::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--accent));
+  animation: scroll-hint 2.2s var(--ease-in-out) infinite;
+}
+
+/* ==========================================================================
+   Özel imleç (yalnızca hassas işaretçili cihazlarda)
+   ========================================================================== */
+
+/* İmleç öğeleri DOM'da hep var; yalnızca `custom-cursor` sınıfı eklendiğinde
+   görünür oluyorlar. Sınıf, dokunmatik cihazlarda ve hareket azaltma tercihinde
+   hiç eklenmiyor. */
+.cursor-el {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.custom-cursor .cursor-el {
+    display: block;
+  }
+  html.custom-cursor,
+  html.custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* ==========================================================================
+   Hareket azaltma tercihi
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html.custom-cursor,
+  html.custom-cursor * {
+    cursor: auto !important;
+  }
+}
