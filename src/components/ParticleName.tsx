@@ -158,6 +158,33 @@ export default function ParticleName({
       spawnedAt = performance.now();
     };
 
+    /**
+     * Düz metin başlığından parçacıklara geçiş.
+     *
+     * Kurulumun başarılı olması yetmez, tek kare çizilmesi de yetmez: sekme
+     * arka plandaysa ya da requestAnimationFrame kısıtlanmışsa parçacıklar
+     * daha uçuş hâlindeyken donup kalır ve isim okunmaz olurdu. Bu yüzden
+     * geçiş, parçacıklar gerçekten hedeflerine oturduğunda yapılıyor.
+     */
+    let handedOff = false;
+    const CONVERGED_PX = 10;
+
+    const handoffWhenReadable = () => {
+      if (handedOff || particles.length === 0) return;
+      // Tüm diziyi taramaya gerek yok — eşit aralıklı bir örneklem yeterli
+      const stride = Math.max(1, Math.floor(particles.length / 24));
+      let sum = 0;
+      let n = 0;
+      for (let i = 0; i < particles.length; i += stride) {
+        const p = particles[i];
+        sum += Math.hypot(p.tx - p.x, p.ty - p.y);
+        n++;
+      }
+      if (sum / n > CONVERGED_PX) return;
+      handedOff = true;
+      wrap.classList.add("particles-live");
+    };
+
     const draw = (now: number) => {
       if (!running) return;
       ctx.clearRect(0, 0, width, height);
@@ -209,6 +236,7 @@ export default function ParticleName({
       }
 
       ctx.globalAlpha = 1;
+      handoffWhenReadable();
       raf = requestAnimationFrame(draw);
     };
 
@@ -221,6 +249,11 @@ export default function ParticleName({
         ctx.fillRect(p.tx, p.ty, p.size, p.size);
       }
       ctx.globalAlpha = 1;
+      // Statik çizimde parçacıklar zaten hedeflerinde
+      if (particles.length) {
+        handedOff = true;
+        wrap.classList.add("particles-live");
+      }
     };
 
     const onPointerMove = (e: PointerEvent) => {
@@ -263,10 +296,6 @@ export default function ParticleName({
     }
 
     build();
-
-    // Parçacıklar gerçekten çizilebiliyor — düz metin başlığı gizle.
-    // Buraya kadar gelinemezse başlık görünür kalır (kasıtlı yedek).
-    wrap.classList.add("particles-live");
 
     if (reduced) {
       drawStatic();
