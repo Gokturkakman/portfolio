@@ -374,8 +374,10 @@ export type QuizItem = {
 };
 
 /**
- * GÖZDEN GEÇİR: Doğru iddialar CV'den; yalanlar benim uydurduklarım.
- * Yalanların "inandırıcı ama yanlış" olması gerekiyor — okuyup onayla.
+ * Doğru iddialar CV'den geliyor. Yalanlar (robotu altı yaşında tek başına
+ * yapmak, roketin 10.000 fite çıkması, yüzmede Türkiye şampiyonluğu)
+ * Göktürk tarafından "bunların hiçbiri bende doğru değil" diye onaylandı —
+ * oyunun çalışması için tam olarak gereken şey bu.
  */
 export const quiz: QuizItem[] = [
   {
