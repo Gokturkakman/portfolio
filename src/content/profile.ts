@@ -81,17 +81,32 @@ export type Social = {
 };
 
 /**
- * Şimdilik yalnızca e-posta var: CV'de sosyal medya hesabı yok ve tahmini
- * kullanıcı adı yazmak kırık link demek.
- *
- * Hesaplarını verdiğinde aşağıdaki gibi ekle — site kendiliğinden uyum sağlar
- * (hero, iletişim ızgarası ve ⌘K paleti hepsi bu diziden besleniyor):
- *
- *   { key: "github",   label: t("GitHub", "GitHub"),       href: "https://github.com/KULLANICI",      handle: "@KULLANICI" },
- *   { key: "linkedin", label: t("LinkedIn", "LinkedIn"),   href: "https://linkedin.com/in/KULLANICI", handle: "in/KULLANICI" },
- *   { key: "instagram",label: t("Instagram", "Instagram"), href: "https://instagram.com/KULLANICI",   handle: "@KULLANICI" },
+ * Sıralama önemli: hero'da ilk dördü gösteriliyor, iletişim bölümünde hepsi.
+ * Yeni hesap eklemek için diziye bir satır eklemen yeterli — hero, iletişim
+ * ızgarası ve ⌘K paleti hepsi buradan besleniyor.
  */
 export const socials: Social[] = [
+  {
+    key: "github",
+    label: t("GitHub", "GitHub"),
+    href: "https://github.com/Gokturkakman",
+    handle: "@Gokturkakman",
+  },
+  {
+    key: "linkedin",
+    label: t("LinkedIn", "LinkedIn"),
+    // Profil adresinde Türkçe karakter var (göktürk). Yüzde-kodlanmış hâli
+    // yazılıyor: kodlanmamış URL bazı e-posta istemcilerinde ve eski
+    // tarayıcılarda bozuluyor.
+    href: "https://www.linkedin.com/in/g%C3%B6kt%C3%BCrk-akman-61537a356",
+    handle: "in/göktürk-akman",
+  },
+  {
+    key: "instagram",
+    label: t("Instagram", "Instagram"),
+    href: "https://www.instagram.com/gokturk.akman/",
+    handle: "@gokturk.akman",
+  },
   {
     key: "email",
     label: t("E-posta", "Email"),
