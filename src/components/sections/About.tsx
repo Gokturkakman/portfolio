@@ -57,10 +57,10 @@ export default function About() {
                   <ul className="flex flex-wrap gap-1.5">
                     {group.items.map((item) => (
                       <li
-                        key={item}
+                        key={item.en}
                         className="rounded-md border border-line bg-bg-raised/60 px-2.5 py-1 font-[family-name:var(--font-mono)] text-[11px] text-fg-dim transition-colors duration-200 hover:border-accent hover:text-accent"
                       >
-                        {item}
+                        {tr(item)}
                       </li>
                     ))}
                   </ul>

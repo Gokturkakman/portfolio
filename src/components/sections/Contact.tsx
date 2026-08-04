@@ -74,7 +74,7 @@ export default function Contact() {
                   className="group flex h-full items-center justify-between gap-4 bg-bg px-5 py-5 transition-colors duration-300 hover:bg-bg-raised"
                 >
                   <span>
-                    <span className="block text-[15px] font-medium">{s.label}</span>
+                    <span className="block text-[15px] font-medium">{tr(s.label)}</span>
                     <span className="mt-0.5 block font-[family-name:var(--font-mono)] text-[11px] text-fg-faint">
                       {s.handle}
                     </span>

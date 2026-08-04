@@ -3,7 +3,7 @@
 import { Section, SectionHeader } from "@/components/Section";
 import { Reveal } from "@/components/motion-primitives";
 import { useApp } from "@/lib/app-state";
-import { timeline, ui } from "@/content/profile";
+import { service, timeline, ui } from "@/content/profile";
 
 export default function Path() {
   const { tr } = useApp();
@@ -35,12 +35,12 @@ export default function Path() {
               </span>
 
               <span className="w-36 shrink-0 pt-1 font-[family-name:var(--font-mono)] text-[11px] tracking-widest text-fg-faint">
-                {m.period}
+                {tr(m.period)}
               </span>
 
               <div className="sm:pl-10">
                 <h3 className="text-display text-2xl sm:text-3xl">{tr(m.title)}</h3>
-                <p className="mt-1 text-sm text-accent">{m.org}</p>
+                <p className="mt-1 text-sm text-accent">{tr(m.org)}</p>
                 <p className="mt-3 max-w-xl text-pretty text-base leading-relaxed text-fg-dim">
                   {tr(m.body)}
                 </p>
@@ -49,6 +49,32 @@ export default function Path() {
           </Reveal>
         ))}
       </ol>
+
+      {/* Toplumsal katkı — okul/program listesinden ayrı tutuluyor,
+          çünkü farklı bir şeyi anlatıyor. */}
+      {service.length > 0 && (
+        <Reveal delay={0.1}>
+          <div className="mt-20 border-t border-line pt-12">
+            <h3 className="text-eyebrow mb-8">{tr(ui.sections.service)}</h3>
+            <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+              {service.map((s, i) => (
+                <li key={i} className="flex flex-col gap-2 bg-bg p-6">
+                  <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-widest text-fg-faint">
+                    {tr(s.period)}
+                  </span>
+                  <h4 className="text-lg">
+                    {tr(s.title)}
+                    <span className="text-accent"> · {tr(s.org)}</span>
+                  </h4>
+                  <p className="text-pretty text-sm leading-relaxed text-fg-dim">
+                    {tr(s.body)}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      )}
     </Section>
   );
 }

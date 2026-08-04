@@ -100,7 +100,7 @@ export default function Hero() {
                 rel="noreferrer noopener"
                 className="text-[12px] text-fg-faint underline-offset-4 transition-colors duration-200 hover:text-accent hover:underline"
               >
-                {s.label}
+                {tr(s.label)}
               </a>
             ))}
           </div>
@@ -122,10 +122,10 @@ export default function Hero() {
             <div className="animate-marquee flex w-max gap-8 whitespace-nowrap">
               {[...keywords, ...keywords].map((k, i) => (
                 <span
-                  key={`${k}-${i}`}
+                  key={`${k.en}-${i}`}
                   className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.18em] text-fg-faint"
                 >
-                  {k}
+                  {tr(k)}
                 </span>
               ))}
             </div>

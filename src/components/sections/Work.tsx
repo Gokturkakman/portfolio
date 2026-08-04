@@ -84,7 +84,7 @@ function ProjectRow({
               style={{ color: hovered || open ? p.accent[0] : undefined }}
               className="transition-colors duration-300"
             >
-              {p.title}
+              {tr(p.title)}
             </span>
           </h3>
           <p className="mt-2 max-w-xl text-pretty text-sm leading-relaxed text-fg-dim">
@@ -95,10 +95,10 @@ function ProjectRow({
         <span className="hidden shrink-0 flex-wrap justify-end gap-1.5 md:flex md:max-w-[16rem]">
           {p.tags.map((tag) => (
             <span
-              key={tag}
+              key={tag.en}
               className="rounded-md border border-line px-2 py-0.5 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-fg-faint"
             >
-              {tag}
+              {tr(tag)}
             </span>
           ))}
         </span>
@@ -136,10 +136,10 @@ function ProjectRow({
                 <div className="flex flex-wrap gap-1.5 md:hidden">
                   {p.tags.map((tag) => (
                     <span
-                      key={tag}
+                      key={tag.en}
                       className="rounded-md border border-line px-2 py-0.5 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-wider text-fg-faint"
                     >
-                      {tag}
+                      {tr(tag)}
                     </span>
                   ))}
                 </div>

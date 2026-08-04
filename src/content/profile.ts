@@ -5,8 +5,9 @@
  *  Sitedeki her metin, link ve proje burada. Tasarıma dokunmadan içeriği
  *  buradan değiştirebilirsin.
  *
- *  ⚠️  `TODO:` ile işaretli alanlar YER TUTUCU (placeholder). Gerçek bilgilerinle
- *      değiştir. Değiştirmediğin sürece site çalışır ama seni anlatmaz.
+ *  İçerik Göktürk_Akman_CV.docx'ten alındı (Mayıs 2026).
+ *  `GÖZDEN GEÇİR:` ile işaretli yerler CV'de olmayan, benim yazdığım
+ *  metinler — onayından geçmeli.
  * ============================================================================
  */
 
@@ -20,31 +21,43 @@ const t = (tr: string, en: string): Localized => ({ tr, en });
 /* -------------------------------------------------------------------------- */
 
 export const identity = {
-  /** Hero'da parçacıklarla çizilen isim. Kısa tut — 2 kelime ideal. */
+  /** Hero'da parçacıklarla çizilen isim */
   name: "Göktürk Akman",
-  /** Parçacık efekti için baş harfler (mobilde tam isim yerine bu kullanılır) */
   initials: "GA",
-  role: t(
-    // TODO: kendi ünvanın
-    "Yapay Zekâ & Ürün Geliştirici",
-    "AI & Product Engineer",
-  ),
-  /** Hero'nun altındaki tek cümlelik iddia. En önemli cümle — buna zaman ayır. */
+  role: t("Hayat Boyu Öğrenici", "Lifelong Learner"),
+
+  /** GÖZDEN GEÇİR: Hero'nun altındaki tek cümlelik iddia. Sitenin en önemli cümlesi. */
   tagline: t(
-    // TODO
-    "Fikirden çalışan ürüne giden yolu kısaltan araçlar kuruyorum. Çoğunlukla LLM'lerle, her zaman detaya takıntılı.",
-    "I build tools that shorten the road from idea to working product. Mostly with LLMs, always obsessed with the details.",
+    "Robot yapıyorum, roket fırlatıyorum, kod yazıyorum — hepsini merak ettiğim için. Öğrenmeyi bir aşama değil, alışkanlık olarak görüyorum.",
+    "I build robots, launch rockets, write code — all because I got curious. I treat learning as a habit, not a phase.",
   ),
+
   location: t("İstanbul, Türkiye", "Istanbul, Türkiye"),
-  /** Şu an ne yapıyorsun — navbar'daki canlı rozet */
+
+  /** Navbar'daki canlı rozet */
   status: t(
-    // TODO
-    "Exposure AI'da ürün geliştiriyorum",
-    "Building products at Exposure AI",
+    "Koç School'da IB Diploma adayı",
+    "IB Diploma candidate at The Koç School",
   ),
-  email: "ozanakman@hotmail.com",
-  /** İndirilebilir CV. public/ altına koy, yoksa null bırak (buton gizlenir). */
-  resume: null as string | null, // örn: "/gokturk-akman-cv.pdf"
+
+  /**
+   * CV'deki okul adresi. Kişisel bir adresi tercih edersen değiştir —
+   * okul adresleri mezuniyetten sonra kapanıyor.
+   */
+  email: "gokturka2028@stu.koc.k12.tr",
+
+  /**
+   * CV'de telefon numaran var; siteye bilerek konmadı. Açık internete telefon
+   * koymak spam ve istenmeyen arama demek. İstersen buraya ekleyebilirsin.
+   */
+  phone: null as string | null,
+
+  /**
+   * İndirilebilir CV. public/ altına koyup yolunu yaz (örn. "/gokturk-akman-cv.pdf").
+   * NOT: Mevcut .docx içinde telefon numaran var — siteye koymadan önce
+   * numarayı çıkarıp PDF'e çevirmen daha doğru olur.
+   */
+  resume: null as string | null,
 };
 
 /* -------------------------------------------------------------------------- */
@@ -61,43 +74,27 @@ export type SocialKey =
 
 export type Social = {
   key: SocialKey;
-  label: string;
+  /** Marka adları (GitHub, LinkedIn…) için iki dilde de aynısını yaz */
+  label: Localized;
   href: string;
   handle: string;
 };
 
 /**
- * Kullanmadığın satırı sil — site otomatik uyum sağlar.
- * TODO: hepsindeki kullanıcı adlarını kendi hesaplarınla değiştir.
+ * Şimdilik yalnızca e-posta var: CV'de sosyal medya hesabı yok ve tahmini
+ * kullanıcı adı yazmak kırık link demek.
+ *
+ * Hesaplarını verdiğinde aşağıdaki gibi ekle — site kendiliğinden uyum sağlar
+ * (hero, iletişim ızgarası ve ⌘K paleti hepsi bu diziden besleniyor):
+ *
+ *   { key: "github",   label: t("GitHub", "GitHub"),       href: "https://github.com/KULLANICI",      handle: "@KULLANICI" },
+ *   { key: "linkedin", label: t("LinkedIn", "LinkedIn"),   href: "https://linkedin.com/in/KULLANICI", handle: "in/KULLANICI" },
+ *   { key: "instagram",label: t("Instagram", "Instagram"), href: "https://instagram.com/KULLANICI",   handle: "@KULLANICI" },
  */
 export const socials: Social[] = [
   {
-    key: "github",
-    label: "GitHub",
-    href: "https://github.com/gokturkakman",
-    handle: "@gokturkakman",
-  },
-  {
-    key: "x",
-    label: "X",
-    href: "https://x.com/gokturkakman",
-    handle: "@gokturkakman",
-  },
-  {
-    key: "linkedin",
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/gokturkakman",
-    handle: "in/gokturkakman",
-  },
-  {
-    key: "youtube",
-    label: "YouTube",
-    href: "https://youtube.com/@gokturkakman",
-    handle: "@gokturkakman",
-  },
-  {
     key: "email",
-    label: "E-posta",
+    label: t("E-posta", "Email"),
     href: `mailto:${identity.email}`,
     handle: identity.email,
   },
@@ -109,30 +106,34 @@ export const socials: Social[] = [
 
 export const about = {
   heading: t("Kısaca", "In short"),
-  /** 2–3 paragraf. İlk cümle en önemlisi. */
+
+  /** GÖZDEN GEÇİR: CV'deki gerçeklerden yazıldı, ama ses tonu benim. */
   paragraphs: [
     t(
-      // TODO
-      "Yazılıma erken yaşta merakla başladım, sonra bu merak yapay zekâya kaydı. Bugün çoğunlukla dil modellerinin üstüne oturan ürünler kuruyorum: sohbet arayüzleri, ajanlar, otomasyonlar.",
-      "I got into software early out of curiosity, and that curiosity drifted toward AI. These days I mostly build products on top of language models: chat interfaces, agents, automations.",
+      "İstanbul'da Koç School'da okuyorum, IB Diploma adayıyım. Fizik, matematik ve işletmeyi ileri seviyede alıyorum; ama okulun dışında öğrendiklerim en az onlar kadar belirleyici oldu.",
+      "I study at The Koç School in Istanbul as an IB Diploma candidate. I take physics, maths and business at higher level — but what I've learned outside class has shaped me just as much.",
     ),
     t(
-      // TODO
-      "İşin ilgimi çeken kısmı modelin kendisi değil, etrafındaki her şey: bir aracın ne zaman çağrılacağı, hatanın kullanıcıya nasıl anlatılacağı, bir animasyonun kaç milisaniye süreceği. Ürünü ürün yapan şey orada saklı.",
-      "The part that interests me isn't the model itself — it's everything around it: when a tool should fire, how an error gets explained to a person, how many milliseconds an animation should take. That's where a product becomes a product.",
+      "Üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum. Cambridge'de hidrolikle çalışan bir biyonik kol prototipi yaptım, Arduino ile çizgi izleyen bir robot programladım. TEKNOFEST'te roket takımındaydım, FRC'de robotik takımının kaptanıyım. Şu an bir arkadaşımla sosyal ağ uygulaması geliştiriyorum.",
+      "I've studied digital design at BİLSEM since third grade. At Cambridge I built a hydraulic bionic arm prototype and programmed a line-tracking robot with Arduino. I was on the rocket team at TEKNOFEST, and I captain my school's FRC robotics team. Right now I'm building a social networking app with a friend.",
     ),
     t(
-      // TODO
-      "Boş vaktimde küçük araçlar yazıyor, okuduklarımı not alıyor ve arada bir bunları paylaşıyorum.",
-      "In my spare time I write small tools, take notes on what I read, and occasionally share them.",
+      "Ortak nokta şu: bir şeyin nasıl çalıştığını gerçekten anlamak için onu yapmam gerekiyor. Bu yüzden kendimi tek bir alanla tanımlamıyorum — biyomedikal mühendislik, robotik ve yapay zekâ şu an en çok vaktimi ayırdığım yerler.",
+      "The through-line: to really understand how something works, I have to build it. That's why I don't define myself by one field — biomedical engineering, robotics and AI are where most of my time goes right now.",
     ),
   ],
-  /** Sağdaki "hızlı bilgi" kartı — 4 satır ideal */
+
   facts: [
-    { k: t("Konum", "Location"), v: identity.location },
-    { k: t("Odak", "Focus"), v: t("LLM ürünleri, arayüz", "LLM products, interfaces") },
-    { k: t("Diller", "Languages"), v: t("Türkçe, İngilizce", "Turkish, English") },
-    { k: t("Şu an", "Currently"), v: t("Yeni projeler açığım", "Open to new projects") },
+    { k: t("Okul", "School"), v: t("Koç School · IB DP", "The Koç School · IB DP") },
+    {
+      k: t("İleri seviye", "Higher level"),
+      v: t("Fizik, Matematik, İşletme", "Physics, Maths, Business"),
+    },
+    { k: t("Diller", "Languages"), v: t("Türkçe, İngilizce (C1)", "Turkish, English (C1)") },
+    {
+      k: t("İlgi alanları", "Interests"),
+      v: t("Biyomedikal, robotik, YZ", "Biomedical, robotics, AI"),
+    },
   ],
 };
 
@@ -142,13 +143,11 @@ export const about = {
 
 export type Project = {
   id: string;
-  title: string;
+  title: Localized;
   year: string;
-  /** Kartta görünen tek satır */
   summary: Localized;
-  /** Açılınca görünen detay */
   detail: Localized;
-  tags: string[];
+  tags: Localized[];
   href?: string;
   repo?: string;
   /** Kartın arkasındaki degrade — 2 hex rengi */
@@ -156,55 +155,83 @@ export type Project = {
   featured?: boolean;
 };
 
-/** TODO: kendi projelerinle değiştir. 3–6 proje ideal. */
 export const projects: Project[] = [
   {
-    id: "chatbot",
-    title: "Exposure Chatbot",
-    year: "2026",
+    id: "social-app",
+    title: t("Sosyal Ağ Uygulaması", "Social Networking App"),
+    year: "2026 —",
     summary: t(
-      "Claude API üstüne kurulu, araç kullanabilen sohbet asistanı.",
-      "A tool-using chat assistant built on the Claude API.",
+      "Alman Lisesi'nden bir arkadaşımla kurduğum, fikirden koda kadar birlikte götürdüğümüz uygulama.",
+      "An app I co-founded with a student from Alman Lisesi, carried from idea to code together.",
     ),
     detail: t(
-      "Streaming yanıtlar, kalıcı konuşma geçmişi ve araç çağırma döngüsü. Next.js route handler'ları üstünde çalışıyor; state Postgres'te tutuluyor.",
-      "Streaming responses, persistent conversation history, and a tool-calling loop. Runs on Next.js route handlers with state in Postgres.",
+      "Kurucu ortak ve geliştirici olarak ürün tasarımından yazılım mimarisine kadar tüm süreçte yer alıyorum. İki farklı okuldan çalışmak, işi bölmeyi ve yazılı iletişimi ciddiye almayı öğretti.",
+      "As co-founder and developer I'm involved across the whole cycle, from product design to software architecture. Working across two different schools taught me to split work properly and take written communication seriously.",
     ),
-    tags: ["Next.js", "Claude API", "Postgres", "TypeScript"],
+    tags: [t("JavaScript", "JavaScript"), t("Ürün tasarımı", "Product design"), t("Yazılım mimarisi", "Architecture")],
     accent: ["#E8853A", "#F2C14E"],
     featured: true,
   },
   {
-    id: "portfolio",
-    title: "gokturk.dev",
-    year: "2026",
+    id: "bionic-arm",
+    title: t("Biyonik Kol Prototipi", "Bionic Arm Prototype"),
+    year: "2024",
     summary: t(
-      "Sıfırdan yazılmış, parçacık hero'lu, kendi kendini anlatan portfolyo.",
-      "A hand-built portfolio with a particle hero that explains itself.",
+      "Kas hareketini hidrolik bir sistemle taklit eden protez kol prototipi.",
+      "A prosthetic arm prototype simulating muscle movement with a hydraulic system.",
     ),
     detail: t(
-      "Canvas 2D üstünde çalışan parçacık alanı, ⌘K komut paleti, iki dilli içerik ve beni tanıyan bir asistan. Hiçbir hazır tema kullanılmadı.",
-      "A Canvas-2D particle field, a ⌘K command palette, bilingual content, and an assistant that knows me. No off-the-shelf theme.",
+      "Cambridge Üniversitesi yaz programının 'Science and the Future' başlığı altında tasarlandı ve sunuldu. Gerçek protez teknolojilerinden yola çıkıp, kas kasılmasını basınçla taklit eden bir mekanizma kurduk. Programa Exceptional Merit bursuyla ($3.500) katıldım.",
+      "Designed and presented on the 'Science and the Future' track of the Cambridge University summer program. Starting from real prosthetic technology, we built a mechanism that mimics muscle contraction using pressure. I attended on an Exceptional Merit Scholarship ($3,500).",
     ),
-    tags: ["Next.js", "Canvas", "Framer Motion"],
-    repo: "https://github.com/gokturkakman", // TODO
+    tags: [t("Biyomedikal", "Biomedical"), t("Hidrolik", "Hydraulics"), t("Prototipleme", "Prototyping")],
     accent: ["#2E7D6E", "#7FC9B4"],
     featured: true,
   },
   {
-    id: "tool",
-    title: "Sandbox",
-    year: "2025",
+    id: "line-robot",
+    title: t("Çizgi İzleyen Robot", "Line-Tracking Robot"),
+    year: "2024",
     summary: t(
-      "Denemelerimi topladığım küçük araçlar koleksiyonu.",
-      "A small collection of experiments and utilities.",
+      "IR sensörler ve mantık tabanlı navigasyonla kendi başına yol bulan robot.",
+      "An autonomous robot navigating by IR sensors and logic-based routing.",
     ),
     detail: t(
-      "Bir şeyi öğrenmenin en hızlı yolu onu yapmak. Burada yarım kalmış deneyler de var, işe yarayanlar da.",
-      "The fastest way to learn something is to build it. Some of these are half-finished experiments, some actually work.",
+      "Cambridge robotik parkurunda C++ ve Arduino ile programlandı. IR sensörler, motor sürücüleri ve navigasyon algoritmasını birleştirmek, 'çalışıyor' ile 'her seferinde çalışıyor' arasındaki farkı öğretti.",
+      "Programmed in C++ with Arduino on the Cambridge robotics track. Wiring together IR sensors, motor drivers and a navigation algorithm taught me the difference between 'it works' and 'it works every time'.",
     ),
-    tags: ["TypeScript", "Python"],
+    tags: [t("C++", "C++"), t("Arduino", "Arduino"), t("Sensörler", "Sensors")],
     accent: ["#8E5AC8", "#C8A2E8"],
+  },
+  {
+    id: "frc",
+    title: t("FRC Yarışma Robotu", "FRC Competition Robot"),
+    year: "2024 — 2026",
+    summary: t(
+      "Koç School takımında mekanik lider ve kaptan; BİLSEM takımında sürücü.",
+      "Mechanical lead and captain at The Koç School; driver on the BİLSEM team.",
+    ),
+    detail: t(
+      "CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım. Mekanik tasarım ve üretim stratejisini yönetmenin yanı sıra yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum. İşin zor kısmı robot değil, üç takımı aynı takvimde tutmak.",
+      "Competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons. Alongside leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. The hard part isn't the robot — it's keeping three teams on one schedule.",
+    ),
+    tags: [t("FRC", "FRC"), t("Mekanik tasarım", "Mechanical design"), t("Takım liderliği", "Team leadership")],
+    accent: ["#C25F14", "#F2A765"],
+  },
+  {
+    id: "teknofest",
+    title: t("TEKNOFEST Roketi", "TEKNOFEST Rocket"),
+    year: "2024",
+    summary: t(
+      "A1 lise kategorisi — en az 4.000 ft irtifa hedefiyle tasarım, üretim ve fırlatma.",
+      "A1 high-school category — design, build and launch targeting a 4,000 ft minimum altitude.",
+    ),
+    detail: t(
+      "Takım üyesi olarak projenin tasarımdan fırlatmaya kadar tüm yaşam döngüsüne katkı verdim. Bir şeyin tek bir denemede çalışmak zorunda olması, kâğıt üstündeki hesabı ciddiye almayı öğretiyor.",
+      "As a team member I contributed across the full project lifecycle, from design to launch. When something has to work on the first try, you start taking the paper calculations seriously.",
+    ),
+    tags: [t("Roketçilik", "Rocketry"), t("Takım projesi", "Team project")],
+    accent: ["#4A6FA5", "#8FB3DC"],
   },
 ];
 
@@ -213,39 +240,56 @@ export const projects: Project[] = [
 /* -------------------------------------------------------------------------- */
 
 export type Milestone = {
-  period: string;
+  period: Localized;
   title: Localized;
-  org: string;
+  org: Localized;
   body: Localized;
 };
 
-/** TODO: kendi geçmişinle değiştir */
 export const timeline: Milestone[] = [
   {
-    period: "2026 —",
-    title: t("Ürün Geliştirici", "Product Engineer"),
-    org: "Exposure AI",
+    period: t("2023 —", "2023 —"),
+    title: t("IB Diploma Adayı", "IB Diploma Candidate"),
+    org: t("The Koç School", "The Koç School"),
     body: t(
-      "LLM tabanlı ürünler: sohbet arayüzleri, ajan altyapıları, iç araçlar.",
-      "LLM-based products: chat interfaces, agent infrastructure, internal tooling.",
+      "İleri seviye: Fizik, Matematik, İşletme. Ortalama 95/100, aralıksız Akademik Yüksek Onur.",
+      "Higher level: Physics, Maths, Business Management. 95/100 average, uninterrupted Academic High Honors.",
     ),
   },
   {
-    period: "2024 — 2026",
-    title: t("Serbest Geliştirici", "Freelance Developer"),
-    org: t("Bağımsız", "Independent").tr,
+    period: t("Yaz 2025", "Summer 2025"),
+    title: t("Lise Yaz Programı", "High School Summer Program"),
+    org: t("Sabancı Üniversitesi", "Sabancı University"),
     body: t(
-      "Web uygulamaları ve otomasyonlar. Küçük ekiplerle, uçtan uca.",
-      "Web applications and automations. Small teams, end to end.",
+      "Kuantum fiziği, çip ve sensör teknolojileri, makine öğrenmesi ve üretken yapay zekâ.",
+      "Quantum physics, chip and sensor technologies, machine learning and generative AI.",
     ),
   },
   {
-    period: "2022 — 2024",
-    title: t("Başlangıç", "Getting started"),
-    org: t("Kendi kendine", "Self-taught").tr,
+    period: t("Oca — Şub 2025", "Jan — Feb 2025"),
+    title: t("Matematiksel Yaratıcılık Kampı", "Mathematical Creativity Camp"),
+    org: t("Nesin Matematik Köyü", "Nesin Mathematics Village"),
     body: t(
-      "İlk satır koddan ilk yayınlanan projeye. Çoğu gece, çoğu deneme yanılma.",
-      "From the first line of code to the first shipped project. Mostly at night, mostly trial and error.",
+      "Haftada 35 saat, yatılı. Açık uçlu problemler ve çok farklı geçmişlerden gelen insanlarla çalışmak.",
+      "35 hours a week, residential. Open-ended problems, and working with people from very different backgrounds.",
+    ),
+  },
+  {
+    period: t("Haz — Ağu 2024", "Jun — Aug 2024"),
+    title: t("Yaz Programı — Exceptional Merit Bursu", "Summer Program — Exceptional Merit Scholarship"),
+    org: t("Cambridge Üniversitesi", "Cambridge University"),
+    body: t(
+      "Yapay zekâ, biyonik mühendislik, hassas tıp ve iklim değişikliği. Biyonik kol ve çizgi izleyen robot burada çıktı.",
+      "AI, bionic engineering, precision medicine and climate change. The bionic arm and the line-tracking robot came out of this.",
+    ),
+  },
+  {
+    period: t("3. sınıftan beri", "Since 3rd grade"),
+    title: t("Dijital Tasarım ve Görsel Sanatlar", "Digital Design and Visual Arts"),
+    org: t("BİLSEM (Bilim ve Sanat Merkezi)", "BİLSEM (Science and Arts Center)"),
+    body: t(
+      "En uzun süredir devam eden şey. Tasarım tarafımın çoğu buradan geliyor.",
+      "The longest-running thing I do. Most of my design instinct comes from here.",
     ),
   },
 ];
@@ -254,22 +298,52 @@ export const timeline: Milestone[] = [
 /*  YETENEKLER                                                                 */
 /* -------------------------------------------------------------------------- */
 
-export const stack: { group: Localized; items: string[] }[] = [
+export const stack: { group: Localized; items: Localized[] }[] = [
   {
-    group: t("Dil & Çatı", "Languages & Frameworks"),
-    items: ["TypeScript", "React", "Next.js", "Python", "Node.js"],
+    group: t("Programlama", "Programming"),
+    items: [t("Python", "Python"), t("C++ (Arduino)", "C++ (Arduino)"), t("JavaScript", "JavaScript")],
   },
   {
-    group: t("Yapay Zekâ", "AI"),
-    items: ["Claude API", "Tool use", "RAG", "Streaming", "Prompt design"],
+    group: t("Donanım", "Hardware"),
+    items: [t("Arduino", "Arduino"), t("VEX", "VEX"), t("FRC", "FRC"), t("IR sensörler", "IR sensors"), t("Motor sürücüleri", "Motor drivers")],
   },
   {
-    group: t("Arayüz", "Interface"),
-    items: ["Tailwind", "Framer Motion", "Canvas", "Erişilebilirlik"],
+    group: t("Tasarım", "Design"),
+    items: [t("Dijital tasarım", "Digital design"), t("Görsel sanatlar", "Visual arts"), t("AutoDesk", "AutoDesk")],
   },
   {
-    group: t("Altyapı", "Infrastructure"),
-    items: ["Postgres", "Vercel", "Docker", "Git"],
+    group: t("Araştırma", "Research"),
+    items: [t("Literatür taraması", "Literature review"), t("Deney dokümantasyonu", "Experiment documentation"), t("Veri kaydı", "Data recording")],
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/*  TOPLUMSAL KATKI                                                            */
+/* -------------------------------------------------------------------------- */
+
+export const service: {
+  period: Localized;
+  title: Localized;
+  org: Localized;
+  body: Localized;
+}[] = [
+  {
+    period: t("2024 —", "2024 —"),
+    title: t("Mentor", "Mentor"),
+    org: t("LGS Arkadaşım", "LGS Arkadaşım Initiative"),
+    body: t(
+      "Maddi imkânı kısıtlı, başarılı öğrencilere LGS yılı boyunca mentorluk. Kişiye özel çalışma planı, akademik ve moral destek, ilerleme takibi.",
+      "Mentoring high-achieving students from low-income backgrounds through their LGS exam year: personalised study plans, academic and emotional support, progress tracking.",
+    ),
+  },
+  {
+    period: t("Ara 2024 — Oca 2025", "Dec 2024 — Jan 2025"),
+    title: t("Gönüllü", "Volunteer"),
+    org: t("KAÇUV — Kanserli Çocuklara Umut Vakfı", "KAÇUV — Hope Foundation for Children with Cancer"),
+    body: t(
+      "Maraton etkinliklerinde farkındalık ve bağış topladım, kampanyayı sosyal medyada yaydım.",
+      "Raised awareness and donations at city marathon events, and amplified the campaign on social media.",
+    ),
   },
 ];
 
@@ -280,48 +354,76 @@ export const stack: { group: Localized; items: string[] }[] = [
 export type QuizItem = {
   /** Üç iddia; ikisi doğru, biri yalan. Oyuncu YALANI bulmaya çalışır. */
   claims: Localized[];
-  /** Yalan olanın indeksi (0, 1 veya 2) */
   lieIndex: 0 | 1 | 2;
-  /** Cevap sonrası gösterilen açıklama */
   reveal: Localized;
 };
 
-/** TODO: kendi hakkındaki gerçekler + bir yalanla değiştir. Bu bölüm seni anlatıyor. */
+/**
+ * GÖZDEN GEÇİR: Doğru iddialar CV'den; yalanlar benim uydurduklarım.
+ * Yalanların "inandırıcı ama yanlış" olması gerekiyor — okuyup onayla.
+ */
 export const quiz: QuizItem[] = [
   {
     claims: [
-      t("İlk kodumu bir oyun hilesi yazmak için yazdım.", "I wrote my first code to cheat at a video game."),
-      t("Klavyemi yılda en az iki kez değiştiriyorum.", "I swap my keyboard at least twice a year."),
-      t("Hiç gece 3'ten sonra kod yazmadım.", "I have never written code after 3 AM."),
+      t(
+        "Cambridge'de kas hareketini hidrolikle taklit eden bir biyonik kol yaptım.",
+        "At Cambridge I built a bionic arm that mimics muscle movement with hydraulics.",
+      ),
+      t(
+        "Üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum.",
+        "I've studied digital design at BİLSEM since third grade.",
+      ),
+      t(
+        "İlk robotumu altı yaşımda tek başıma yaptım.",
+        "I built my first robot on my own at the age of six.",
+      ),
     ],
     lieIndex: 2,
     reveal: t(
-      "Gece 3 benim en verimli saatim. Bu siteyi bile çoğunlukla o saatlerde yazdım.",
-      "3 AM is my most productive hour. Most of this site was written around then.",
+      "İlk ciddi robotum FRC takımıyla oldu. Öncesinde bol bol söküp taktım ama tek başıma değil — robotik benim için hep takım işi.",
+      "My first serious robot came with the FRC team. Before that I took plenty of things apart, but never alone — robotics has always been teamwork for me.",
     ),
   },
   {
     claims: [
-      t("Bir projeyi bitirmeden üçüncüsüne başlamam.", "I never start a third project before finishing one."),
-      t("Tasarımı koddan önce kafamda bitiriyorum.", "I finish the design in my head before writing code."),
-      t("Kahvesiz sabah toplantısına girmem.", "I don't take morning meetings without coffee."),
+      t(
+        "TEKNOFEST'te fırlattığımız roket 10.000 fitin üzerine çıktı.",
+        "Our TEKNOFEST rocket climbed past 10,000 feet.",
+      ),
+      t(
+        "Roket projesinde tasarımdan fırlatmaya kadar her aşamada yer aldım.",
+        "I was involved at every stage of the rocket project, from design to launch.",
+      ),
+      t(
+        "FRC'de bir takımda kaptan, başka bir takımda sürücüyüm.",
+        "In FRC I'm a captain on one team and a driver on another.",
+      ),
     ],
     lieIndex: 0,
     reveal: t(
-      "Şu an açık en az dört projem var. Bu bir itiraf, savunma değil.",
-      "I have at least four projects open right now. That's a confession, not a defense.",
+      "Kategorimiz A1'di, hedef en az 4.000 fit. 10.000 fit bambaşka bir lig — ve o ligde henüz değiliz.",
+      "We were in the A1 category, targeting a 4,000 ft minimum. 10,000 feet is a different league — one we're not in yet.",
     ),
   },
   {
     claims: [
-      t("En sevdiğim hata mesajı: 'undefined is not a function'.", "My favorite error message is 'undefined is not a function'."),
-      t("Bir animasyonu 40ms için 20 kez tekrar ayarladım.", "I re-tuned one animation 20 times over 40 milliseconds."),
-      t("Tab yerine boşluk kullanıyorum.", "I use spaces, not tabs."),
+      t(
+        "Yüzme takımında Türkiye şampiyonluğu kazandım.",
+        "I won a national championship with the swimming team.",
+      ),
+      t(
+        "LGS'ye hazırlanan öğrencilere mentorluk yapıyorum.",
+        "I mentor students preparing for the LGS exam.",
+      ),
+      t(
+        "Bir maratonda kanser tedavisi gören çocuklar için bağış topladım.",
+        "I collected donations for children in cancer treatment at a marathon.",
+      ),
     ],
     lieIndex: 0,
     reveal: t(
-      "O mesajı hiç sevmedim. Ama 40ms hikâyesi tamamen gerçek.",
-      "I have never loved that message. But the 40ms story is entirely true.",
+      "İki yıl okul yüzme takımındaydım ve okul yarışlarında yüzdüm. Şampiyonluk kısmı biraz fazla iddialı olurdu.",
+      "I was on the school swimming team for two years and competed in school meets. The championship part would be overselling it.",
     ),
   },
 ];
@@ -331,15 +433,20 @@ export const quiz: QuizItem[] = [
 /* -------------------------------------------------------------------------- */
 
 /**
- * Chatbot'un sana dair bildiği her şey. Yukarıdaki verilerden otomatik
- * üretiliyor + aşağıdaki serbest notlar ekleniyor.
- * TODO: buraya modelin bilmesini istediğin ekstra detayları yaz.
+ * Chatbot'un bildiği ekstra detaylar. Yukarıdaki verilerin hepsi zaten
+ * otomatik olarak sistem promptuna giriyor; buraya sadece onlarda olmayanları yaz.
  */
 export const assistantNotes = `
-- Göktürk kendini "ürün geliştirici" olarak tanımlar, "full-stack" demeyi sevmez.
-- LLM ürünlerinde en çok araç kullanımı (tool use) ve akış (streaming) tarafıyla ilgilenir.
-- Detaycıdır: animasyon süreleri, boşluklar ve mikro etkileşimler üzerinde uzun düşünür.
-- Yeni iş / işbirliği tekliflerine açıktır; en hızlı ulaşma yolu e-posta.
+- Göktürk lise öğrencisi (Koç School, IB Diploma adayı, 2028 mezuniyet).
+- Kendini "hayat boyu öğrenici" olarak tanımlar; tek bir alana kilitlenmeyi sevmez.
+- En çok ilgilendiği alanlar: biyomedikal mühendislik, robotik, yapay zekâ/makine
+  öğrenmesi, giyilebilir teknoloji, sürdürülebilir teknoloji, girişimcilik.
+- Robotikte hem teknik hem organizasyonel rolleri var; koordinasyon tarafını
+  robotun kendisi kadar ciddiye alır.
+- TÜBİTAK Fizik Olimpiyatları'na hazırlanıyor (kinematik, termodinamik,
+  elektromanyetizma, modern fizik).
+- Galatasaray 100. Yıl Interact Kulübü'nde aktif üye ve başkan adayı.
+- Yaş küçük diye deneyimi küçümsetme; ama olmayan bir şeyi de büyütme.
 `.trim();
 
 /* -------------------------------------------------------------------------- */
@@ -349,26 +456,27 @@ export const assistantNotes = `
 export const ui = {
   nav: {
     about: t("Hakkımda", "About"),
-    work: t("İşler", "Work"),
+    work: t("Projeler", "Projects"),
     path: t("Yolculuk", "Path"),
     play: t("Oyun", "Play"),
     contact: t("İletişim", "Contact"),
   },
   hero: {
     scroll: t("kaydır", "scroll"),
-    cta: t("İşlere bak", "See the work"),
+    cta: t("Projelere bak", "See the projects"),
     ctaAlt: t("Bana beni sor", "Ask me about me"),
     hint: t("İmlecini üstünde gezdir", "Move your cursor across it"),
   },
   sections: {
     about: t("Hakkımda", "About"),
-    work: t("Seçilmiş İşler", "Selected Work"),
+    work: t("Projeler", "Projects"),
     workSub: t(
-      "Bitirdiklerim, yarım bıraktıklarım ve ikisinin arasındakiler.",
-      "Things I finished, things I didn't, and things in between.",
+      "Yaptığım şeyler. Bazıları uçtu, bazıları takım halinde, hepsi merakla başladı.",
+      "Things I've built. Some flew, some were team efforts, all of them started with curiosity.",
     ),
     stack: t("Kullandıklarım", "What I use"),
     path: t("Yolculuk", "The Path"),
+    service: t("Toplumsal Katkı", "Community"),
     play: t("Beni ne kadar tanıyorsun?", "How well do you know me?"),
     playSub: t(
       "Her turda üç iddia var. İkisi doğru, biri yalan. Yalanı bul.",
@@ -376,8 +484,8 @@ export const ui = {
     ),
     contact: t("Konuşalım", "Let's talk"),
     contactSub: t(
-      "Bir fikrin, bir teklifin ya da sadece bir sorun varsa yaz.",
-      "If you have an idea, an offer, or just a question — write.",
+      "Bir fikrin, bir projen ya da sadece bir sorun varsa yaz.",
+      "If you have an idea, a project, or just a question — write.",
     ),
   },
   game: {
@@ -394,8 +502,8 @@ export const ui = {
   chat: {
     title: t("Bana beni sor", "Ask me about me"),
     subtitle: t(
-      "Göktürk'ü tanıyan bir asistan. Deneyimi, projeleri, çalışma şekli — ne merak ediyorsan.",
-      "An assistant that knows Göktürk. Experience, projects, how he works — whatever you're curious about.",
+      "Göktürk'ü tanıyan bir asistan. Projeleri, okuduğu şeyler, çalışma şekli — ne merak ediyorsan.",
+      "An assistant that knows Göktürk. His projects, what he studies, how he works — whatever you're curious about.",
     ),
     placeholder: t("Bir şey sor…", "Ask something…"),
     send: t("Gönder", "Send"),
@@ -407,9 +515,9 @@ export const ui = {
     ),
     suggestions: [
       t("Hangi projelerde çalıştı?", "What projects has he worked on?"),
-      t("Nasıl bir geliştirici?", "What kind of developer is he?"),
+      t("Robotikte ne yapıyor?", "What does he do in robotics?"),
+      t("Neyle ilgileniyor?", "What is he interested in?"),
       t("Onunla nasıl iletişime geçerim?", "How do I get in touch?"),
-      t("En güçlü olduğu alan ne?", "What is he strongest at?"),
     ],
     disclaimer: t(
       "Bu bir yapay zekâ. Yanılabilir — önemli şeyleri doğrudan sor.",

@@ -10,9 +10,14 @@ Brief üç soru soruyordu. Cevaplar:
 
 | Soru | Karar |
 |---|---|
-| Hangi linkler / projeler? | GitHub, X, LinkedIn, YouTube, e-posta + 3 proje kartı. Hepsi tek dosyadan (`src/content/profile.ts`) besleniyor. |
+| Hangi linkler / projeler? | 5 proje (sosyal ağ uygulaması, biyonik kol, çizgi izleyen robot, FRC robotu, TEKNOFEST roketi) + toplumsal katkı. Linklerde şimdilik yalnızca e-posta — sosyal medya hesapları verilmediği için uydurma kullanıcı adı yazılmadı. Hepsi tek dosyadan (`src/content/profile.ts`) besleniyor. |
 | Görsel olarak nasıl planladın? | "Ink & Ember" — sıcak isli-siyah zemin, kor turuncusu vurgu, editöryel serif başlıklar. Detay §3'te. |
-| Seni anlatan özel öğe? | Dört tane: parçacık hero, "iki doğru bir yalan" mini oyunu, CV'ni bilen AI asistan, mikro-etkileşim paketi. |
+| Seni anlatan özel öğe? | Dört tane: parçacık hero, "iki doğru bir yalan" mini oyunu, CV'yi bilen AI asistan, mikro-etkileşim paketi. |
+
+**İçerik kaynağı:** `Göktürk_Akman_CV.docx` (Mayıs 2026). Ünvan olarak
+"Hayat Boyu Öğrenici" seçildi — tek bir alana kilitlenmeyen bir profile
+CV'deki dağılım (robotik + roket + biyomedikal + tasarım + mentorluk) da
+uyuyor.
 
 ---
 
@@ -212,9 +217,17 @@ Yayına almak için: repoyu Vercel'e bağla, `ANTHROPIC_API_KEY` ortam değişke
 
 | Alan | Durum |
 |---|---|
-| `tsc --noEmit` | ✅ hatasız |
-| `next build` | ✅ başarılı |
-| Hero + About görsel | ✅ tarayıcıda doğrulandı |
+| `tsc --noEmit` / `eslint` / `next build` | ✅ hatasız |
+| Hero (parçacık + JS'siz yedek) | ✅ tarayıcıda doğrulandı |
+| About | ✅ tarayıcıda doğrulandı |
 | Work / Path / Play / Contact | ✅ DOM ve hesaplanmış stil üzerinden doğrulandı |
+| Sunucu HTML'i CV içeriğiyle uyumlu | ✅ doğrulandı (eski yer tutucu metinlerin hiçbiri kalmadı) |
+| Asistan sistem promptu (TR + EN) | ✅ ayrı çalıştırılıp kontrol edildi — `[object Object]` / `undefined` yok |
 | `/api/chat` anahtarsız (503) | ✅ doğrulandı |
 | `/api/chat` canlı streaming | ⚠️ **doğrulanmadı** — makinede Anthropic anahtarı yok. Anahtar eklendikten sonra ilk çalıştırmada kontrol edilmeli. |
+
+### Gözden geçirilmesi gerekenler
+
+`profile.ts` içinde `GÖZDEN GEÇİR:` ile işaretli üç yer var — tanıtım cümlesi,
+"Hakkımda" paragrafları ve mini oyundaki **yalan** iddialar. Doğru iddialar
+CV'den geliyor; yalanlar uydurma, dolayısıyla onayından geçmeli.

@@ -117,7 +117,7 @@ export default function CommandPalette() {
 
     const links: Item[] = socials.map((s) => ({
       id: `link-${s.key}`,
-      label: s.label,
+      label: tr(s.label),
       group: tr(ui.palette.links),
       icon: <ArrowUpRight size={14} strokeWidth={1.75} />,
       hint: s.handle,
