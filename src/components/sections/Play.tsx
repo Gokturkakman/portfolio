@@ -11,7 +11,7 @@ import { quiz, ui } from "@/content/profile";
 type Phase = "idle" | "asking" | "revealed" | "done";
 
 /**
- * "İki doğru bir yalan" — her turda üç iddiadan yalanı bulmaya çalışırsın.
+ * "İki doğru bir yalan": her turda üç iddiadan yalanı bulmaya çalışırsın.
  * İçerik profile.ts içindeki `quiz` dizisinden geliyor.
  */
 export default function Play() {
@@ -74,7 +74,7 @@ export default function Play() {
             }}
           />
 
-          {/* initial={false}: ilk panel animasyonsuz gelir — JS gecikirse ya da
+          {/* initial={false}: ilk panel animasyonsuz gelir: JS gecikirse ya da
               çalışmazsa "Başla" ekranı boş kalmaz. Sonraki geçişler animasyonlu. */}
           <AnimatePresence mode="wait" initial={false}>
             {/* ---------------------------------------------------------- */}

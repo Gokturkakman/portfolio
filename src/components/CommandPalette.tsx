@@ -139,7 +139,7 @@ export default function CommandPalette() {
     );
   }, [items, query]);
 
-  // Gruplara böl ama düz indeksi koru — klavye gezinmesi bunun üstünde çalışıyor
+  // Gruplara böl ama düz indeksi koru: klavye gezinmesi bunun üstünde çalışıyor
   const groups = useMemo(() => {
     const map = new Map<string, { item: Item; index: number }[]>();
     filtered.forEach((item, index) => {

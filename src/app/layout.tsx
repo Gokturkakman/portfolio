@@ -24,7 +24,7 @@ const display = Instrument_Serif({
   display: "swap",
 });
 
-const title = `${identity.name} — ${identity.role.en}`;
+const title = `${identity.name} - ${identity.role.en}`;
 const description = identity.tagline.en;
 
 export const metadata: Metadata = {

@@ -29,7 +29,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Görünürdeki bölümü izle — nav'daki aktif işaret için
+  // Görünürdeki bölümü izle: nav'daki aktif işaret için
   useEffect(() => {
     const sections = LINKS.map((l) => document.getElementById(l.id)).filter(
       (el): el is HTMLElement => Boolean(el),

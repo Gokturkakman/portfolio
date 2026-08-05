@@ -29,7 +29,7 @@ type AppState = {
   paletteOpen: boolean;
   setPaletteOpen: (v: boolean) => void;
 
-  /** İlk hidrasyon tamamlandı mı — sunucu/istemci farkı olan yerler için */
+  /** İlk hidrasyon tamamlandı mı: sunucu/istemci farkı olan yerler için */
   mounted: boolean;
 };
 
@@ -41,7 +41,7 @@ const THEME_KEY = "ga:theme";
 /* --------------------------------------------------------------------------
    Tercihler React'in dışında yaşıyor: dil `localStorage`'da, tema doğrudan
    <html data-theme> üstünde (layout'taki bootstrap script'i React'ten önce
-   yazıyor). İkisini de `useSyncExternalStore` ile okuyoruz — effect içinde
+   yazıyor). İkisini de `useSyncExternalStore` ile okuyoruz: effect içinde
    setState çağırmadan, sunucu anlık görüntüsü ayrı verilerek.
    -------------------------------------------------------------------------- */
 

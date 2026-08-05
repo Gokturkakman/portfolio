@@ -17,7 +17,7 @@ export default function Contact() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      /* pano izni yok — mailto zaten var */
+      /* pano izni yok: mailto zaten var */
     }
   };
 
@@ -99,7 +99,7 @@ export default function Contact() {
           </p>
 
           <p className="text-[12px] text-fg-faint">
-            {tr(ui.footer.built)} — Next.js, Canvas, Claude
+            {tr(ui.footer.built)} - Next.js, Canvas, Claude
           </p>
 
           <Magnetic strength={0.2}>

@@ -50,7 +50,7 @@ export default function Path() {
         ))}
       </ol>
 
-      {/* Toplumsal katkı — okul/program listesinden ayrı tutuluyor,
+      {/* Toplumsal katkı: okul/program listesinden ayrı tutuluyor,
           çünkü farklı bir şeyi anlatıyor. */}
       {service.length > 0 && (
         <Reveal delay={0.1}>

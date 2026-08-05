@@ -1,4 +1,4 @@
-# Göktürk Akman — Kişisel Website
+# Göktürk Akman: Kişisel Website
 
 Sıfırdan yazılmış kişisel site. Parçacıklarla çizilen hero, iki dil, iki tema,
 ⌘K komut paleti, "iki doğru bir yalan" mini oyunu ve CV'yi bilen bir AI asistan.
@@ -19,7 +19,7 @@ npm run dev
 
 Asistanın çalışması için `.env.local` içine bir Claude API anahtarı gerekiyor
 ([console.anthropic.com](https://console.anthropic.com/settings/keys)).
-**Anahtar olmadan da site tam çalışır** — sadece sohbet penceresi
+**Anahtar olmadan da site tam çalışır** - sadece sohbet penceresi
 "yapılandırılmamış" der.
 
 ---
@@ -32,7 +32,7 @@ Sitedeki her metin, link ve proje tek dosyada:
 src/content/profile.ts
 ```
 
-`TODO:` ile işaretli alanlar yer tutucudur — kendi bilgilerinle değiştir.
+`TODO:` ile işaretli alanlar yer tutucudur: kendi bilgilerinle değiştir.
 Tasarım dosyalarına dokunman gerekmez. Bir proje eklediğinde asistanın bilgisi,
 komut paletindeki linkler ve hero'daki kayan şerit kendiliğinden güncellenir.
 

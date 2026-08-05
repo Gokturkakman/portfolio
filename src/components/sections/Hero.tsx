@@ -23,7 +23,7 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-dvh flex-col justify-center overflow-hidden pt-24"
     >
-      {/* Zeminde çok kısık bir kor ışığı — düz siyahı kırıyor */}
+      {/* Zeminde çok kısık bir kor ışığı: düz siyahı kırıyor */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-[38%] h-[52rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70"
@@ -43,7 +43,7 @@ export default function Hero() {
           <span className="text-eyebrow">{tr(identity.location)}</span>
         </div>
 
-        {/* İsim — parçacıklar */}
+        {/* İsim: parçacıklar */}
         <div className="intro relative" style={step(1)}>
           <ParticleName
             text={identity.name}

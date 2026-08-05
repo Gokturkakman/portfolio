@@ -22,7 +22,7 @@ type Particle = {
   tx: number;
   ty: number;
   size: number;
-  /** 0 = kor rengi, 1 = kâğıt rengi — parçacıklar arası renk dağılımı */
+  /** 0 = kor rengi, 1 = kâğıt rengi: parçacıklar arası renk dağılımı */
   tone: number;
   /** Yaylanma sertliği; hafif çeşitlilik hareketi organik yapar */
   ease: number;
@@ -30,7 +30,7 @@ type Particle = {
 
 const MAX_PARTICLES = 6000;
 const POINTER_RADIUS = 130;
-/** İtme kuvveti — yüksek tutmak parçacıkları savurup ismi okunmaz yapıyor. */
+/** İtme kuvveti: yüksek tutmak parçacıkları savurup ismi okunmaz yapıyor. */
 const POINTER_FORCE = 210;
 /** Tek karede eklenebilecek en büyük hız; savrulmayı sınırlar. */
 const MAX_IMPULSE = 5.5;
@@ -171,7 +171,7 @@ export default function ParticleName({
 
     const handoffWhenReadable = () => {
       if (handedOff || particles.length === 0) return;
-      // Tüm diziyi taramaya gerek yok — eşit aralıklı bir örneklem yeterli
+      // Tüm diziyi taramaya gerek yok: eşit aralıklı bir örneklem yeterli
       const stride = Math.max(1, Math.floor(particles.length / 24));
       let sum = 0;
       let n = 0;
@@ -199,7 +199,7 @@ export default function ParticleName({
         p.vx += (p.tx - p.x) * p.ease;
         p.vy += (p.ty - p.y) * p.ease;
 
-        // İmleç itmesi — mesafeyle doğrusal azalır, tek karede tavanı var
+        // İmleç itmesi: mesafeyle doğrusal azalır, tek karede tavanı var
         if (pointer.active) {
           const dx = p.x - pointer.x;
           const dy = p.y - pointer.y;
@@ -219,7 +219,7 @@ export default function ParticleName({
         p.x += p.vx;
         p.y += p.vy;
 
-        // Hızlı parçacıklar kor rengine kayar — hareketi görünür kılar
+        // Hızlı parçacıklar kor rengine kayar: hareketi görünür kılar
         const speed = Math.min(1, (Math.abs(p.vx) + Math.abs(p.vy)) / 6);
         const heat = Math.max(speed, 1 - settle);
 
@@ -287,7 +287,7 @@ export default function ParticleName({
       attributeFilter: ["data-theme"],
     });
 
-    // Yazı tipi geç yüklenirse metin ölçüsü değişir — yeniden kur
+    // Yazı tipi geç yüklenirse metin ölçüsü değişir: yeniden kur
     if (document.fonts?.ready) {
       document.fonts.ready.then(() => {
         build();
@@ -336,7 +336,7 @@ export default function ParticleName({
   return (
     <div ref={wrapRef} className={`relative ${className}`}>
       {/*
-        Gerçek başlık. Varsayılan olarak GÖRÜNÜR — JS çalışmazsa, canvas
+        Gerçek başlık. Varsayılan olarak GÖRÜNÜR: JS çalışmazsa, canvas
         desteklenmezse ya da bir paket yüklenemezse ziyaretçi yine ismi görür.
         Parçacıklar devreye girdiğinde `particles-live` sınıfı bunu gizliyor.
       */}

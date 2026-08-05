@@ -13,7 +13,7 @@ import {
 
 /**
  * Asistanın bağlamını profile.ts'ten üretir.
- * İçeriği güncellediğinde prompt kendiliğinden güncellenir — burada elle
+ * İçeriği güncellediğinde prompt kendiliğinden güncellenir: burada elle
  * tutulan ikinci bir kopya yok.
  */
 export function buildSystemPrompt(lang: Lang): string {
@@ -33,7 +33,7 @@ export function buildSystemPrompt(lang: Lang): string {
   const work = projects
     .map(
       (p) =>
-        `- ${L(p.title)} (${p.year}) — ${L(p.summary)} ${L(p.detail)} [${p.tags
+        `- ${L(p.title)} (${p.year}): ${L(p.summary)} ${L(p.detail)} [${p.tags
           .map(L)
           .join(", ")}]${p.href ? ` Site: ${p.href}` : ""}${
           p.repo ? ` Repo: ${p.repo}` : ""
@@ -42,7 +42,7 @@ export function buildSystemPrompt(lang: Lang): string {
     .join("\n");
 
   const path = timeline
-    .map((m) => `- ${L(m.period)} · ${L(m.title)} @ ${L(m.org)} — ${L(m.body)}`)
+    .map((m) => `- ${L(m.period)} · ${L(m.title)} @ ${L(m.org)} - ${L(m.body)}`)
     .join("\n");
 
   const tools = stack
@@ -50,7 +50,7 @@ export function buildSystemPrompt(lang: Lang): string {
     .join("\n");
 
   const community = service
-    .map((s) => `- ${L(s.period)} · ${L(s.title)} @ ${L(s.org)} — ${L(s.body)}`)
+    .map((s) => `- ${L(s.period)} · ${L(s.title)} @ ${L(s.org)} - ${L(s.body)}`)
     .join("\n");
 
   const links = socials.map((s) => `- ${L(s.label)}: ${s.href}`).join("\n");

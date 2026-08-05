@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 /* -------------------------------------------------------------------------- */
-/*  Reveal — kaydırınca beliren blok                                           */
+/*  Reveal: kaydırınca beliren blok                                           */
 /* -------------------------------------------------------------------------- */
 
 /**
@@ -16,7 +16,7 @@ import { useRef, useState, useEffect } from "react";
  * animasyon "opt-in": blok DOM'a görünür geliyor, yalnızca ekranın altındaysa
  * gizlenip gözlemciye bağlanıyor.
  *
- * React state'i yerine sınıf değiştirme kullanılıyor — her bölüm için yeniden
+ * React state'i yerine sınıf değiştirme kullanılıyor: her bölüm için yeniden
  * render tetiklemeye gerek yok, iş tamamen CSS geçişinde.
  */
 export function Reveal({
@@ -39,7 +39,7 @@ export function Reveal({
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // Zaten görünüyorsa hiç dokunma — içerik olduğu gibi kalsın
+    // Zaten görünüyorsa hiç dokunma: içerik olduğu gibi kalsın
     if (el.getBoundingClientRect().top <= window.innerHeight * 0.9) return;
 
     el.classList.add("reveal-armed");
@@ -74,7 +74,7 @@ export function Reveal({
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Magnetic — imlece hafifçe yaklaşan buton sarmalayıcı                       */
+/*  Magnetic: imlece hafifçe yaklaşan buton sarmalayıcı                       */
 /* -------------------------------------------------------------------------- */
 
 export function Magnetic({
@@ -115,7 +115,7 @@ export function Magnetic({
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Cursor — özel imleç (yalnızca fare + hareket açıkken)                      */
+/*  Cursor: özel imleç (yalnızca fare + hareket açıkken)                      */
 /* -------------------------------------------------------------------------- */
 
 /**
@@ -195,7 +195,7 @@ export function Cursor() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  ScrollProgress — sayfanın üstündeki ince kor çizgisi                       */
+/*  ScrollProgress: sayfanın üstündeki ince kor çizgisi                       */
 /* -------------------------------------------------------------------------- */
 
 export function ScrollProgress() {

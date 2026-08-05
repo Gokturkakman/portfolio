@@ -7,7 +7,7 @@
  *
  *  İçerik Göktürk_Akman_CV.docx'ten alındı (Mayıs 2026).
  *  `GÖZDEN GEÇİR:` ile işaretli yerler CV'de olmayan, benim yazdığım
- *  metinler — onayından geçmeli.
+ *  metinler: onayından geçmeli.
  * ============================================================================
  */
 
@@ -28,8 +28,8 @@ export const identity = {
 
   /** GÖZDEN GEÇİR: Hero'nun altındaki tek cümlelik iddia. Sitenin en önemli cümlesi. */
   tagline: t(
-    "Robot yapıyorum, roket fırlatıyorum, kod yazıyorum — hepsini merak ettiğim için. Öğrenmeyi bir aşama değil, alışkanlık olarak görüyorum.",
-    "I build robots, launch rockets, write code — all because I got curious. I treat learning as a habit, not a phase.",
+    "Her alanda yeni bir şey öğrenmeye çalışıyorum ve asıl keyfi o süreçten alıyorum. Robotik, roket, kod, tasarım: hepsi aynı merakın farklı halleri.",
+    "I try to learn something new in every field, and the process itself is the part I enjoy. Robotics, rockets, code, design: different shapes of the same curiosity.",
   ),
 
   location: t("İstanbul, Türkiye", "Istanbul, Türkiye"),
@@ -41,8 +41,7 @@ export const identity = {
   ),
 
   /**
-   * CV'deki okul adresi. Kişisel bir adresi tercih edersen değiştir —
-   * okul adresleri mezuniyetten sonra kapanıyor.
+   * CV'deki okul adresi. Kişisel bir adresi tercih edersen değiştir: * okul adresleri mezuniyetten sonra kapanıyor.
    */
   email: "gokturka2028@stu.koc.k12.tr",
 
@@ -54,7 +53,7 @@ export const identity = {
 
   /**
    * İndirilebilir CV. public/ altına koyup yolunu yaz (örn. "/gokturk-akman-cv.pdf").
-   * NOT: Mevcut .docx içinde telefon numaran var — siteye koymadan önce
+   * NOT: Mevcut .docx içinde telefon numaran var: siteye koymadan önce
    * numarayı çıkarıp PDF'e çevirmen daha doğru olur.
    */
   resume: null as string | null,
@@ -82,7 +81,7 @@ export type Social = {
 
 /**
  * Sıralama önemli: hero'da ilk dördü gösteriliyor, iletişim bölümünde hepsi.
- * Yeni hesap eklemek için diziye bir satır eklemen yeterli — hero, iletişim
+ * Yeni hesap eklemek için diziye bir satır eklemen yeterli: hero, iletişim
  * ızgarası ve ⌘K paleti hepsi buradan besleniyor.
  */
 export const socials: Social[] = [
@@ -125,16 +124,16 @@ export const about = {
   /** GÖZDEN GEÇİR: CV'deki gerçeklerden yazıldı, ama ses tonu benim. */
   paragraphs: [
     t(
-      "İstanbul'da Koç School'da okuyorum, IB Diploma adayıyım. Fizik, matematik ve işletmeyi ileri seviyede alıyorum; ama okulun dışında öğrendiklerim en az onlar kadar belirleyici oldu.",
-      "I study at The Koç School in Istanbul as an IB Diploma candidate. I take physics, maths and business at higher level — but what I've learned outside class has shaped me just as much.",
+      "İstanbul'da Koç School'da okuyorum, IB Diploma adayıyım. Fizik, matematik ve işletmeyi ileri seviyede alıyorum. Ama bir konuyu gerçekten öğrendiğimi, ancak onu kendim yapmaya çalıştığımda hissediyorum.",
+      "I study at The Koç School in Istanbul as an IB Diploma candidate. I take physics, maths and business at higher level. But I only feel like I have actually learned something once I have tried to build it myself.",
     ),
     t(
-      "Üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum. Cambridge'de hidrolikle çalışan bir biyonik kol prototipi yaptım, Arduino ile çizgi izleyen bir robot programladım. TEKNOFEST'te roket takımındaydım, FRC'de robotik takımının kaptanıyım. Şu an bir arkadaşımla sosyal ağ uygulaması geliştiriyorum.",
-      "I've studied digital design at BİLSEM since third grade. At Cambridge I built a hydraulic bionic arm prototype and programmed a line-tracking robot with Arduino. I was on the rocket team at TEKNOFEST, and I captain my school's FRC robotics team. Right now I'm building a social networking app with a friend.",
+      "O yüzden fırsat buldukça yeni bir alana giriyorum. Cambridge'de hidrolikle çalışan bir biyonik kol prototipi yaptım, Arduino ile çizgi izleyen bir robot programladım. TEKNOFEST'te roket takımındaydım, FRC'de robotik takımının kaptanıyım, üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum. Şu an bir arkadaşımla sosyal ağ uygulaması geliştiriyorum.",
+      "So whenever I get the chance, I step into a new field. At Cambridge I built a hydraulic bionic arm prototype and programmed a line-tracking robot with Arduino. I was on the rocket team at TEKNOFEST, I captain my school's FRC robotics team, and I have studied digital design at BİLSEM since third grade. Right now I am building a social networking app with a friend.",
     ),
     t(
-      "Ortak nokta şu: bir şeyin nasıl çalıştığını gerçekten anlamak için onu yapmam gerekiyor. Bu yüzden kendimi tek bir alanla tanımlamıyorum — biyomedikal mühendislik, robotik ve yapay zekâ şu an en çok vaktimi ayırdığım yerler.",
-      "The through-line: to really understand how something works, I have to build it. That's why I don't define myself by one field — biomedical engineering, robotics and AI are where most of my time goes right now.",
+      "Hepsinin ortak noktası sonuç değil, süreç. Yeni bir konuya sıfırdan başlamanın, bir yerde takılıp orada debelenmenin ve sonunda işin nasıl yürüdüğünü anlamanın keyfi bende hep aynı. Kendimi tek bir alanla tanımlamamamın sebebi de bu; şu an en çok vaktimi biyomedikal mühendislik, robotik ve yapay zekâya ayırıyorum.",
+      "What they have in common is not the result, it is the process. Starting a new subject from zero, getting stuck somewhere and wrestling with it, and finally seeing how the thing actually works: that part feels the same every time. It is also why I do not define myself by one field. Right now most of my time goes to biomedical engineering, robotics and AI.",
     ),
   ],
 
@@ -165,7 +164,7 @@ export type Project = {
   tags: Localized[];
   href?: string;
   repo?: string;
-  /** Kartın arkasındaki degrade — 2 hex rengi */
+  /** Kartın arkasındaki degrade: 2 hex rengi */
   accent: [string, string];
   featured?: boolean;
 };
@@ -174,7 +173,7 @@ export const projects: Project[] = [
   {
     id: "social-app",
     title: t("Sosyal Ağ Uygulaması", "Social Networking App"),
-    year: "2026 —",
+    year: "2026→",
     summary: t(
       "Alman Lisesi'nden bir arkadaşımla kurduğum, fikirden koda kadar birlikte götürdüğümüz uygulama.",
       "An app I co-founded with a student from Alman Lisesi, carried from idea to code together.",
@@ -221,14 +220,14 @@ export const projects: Project[] = [
   {
     id: "frc",
     title: t("FRC Yarışma Robotu", "FRC Competition Robot"),
-    year: "2024 — 2026",
+    year: "2024-2026",
     summary: t(
       "Koç School takımında mekanik lider ve kaptan; BİLSEM takımında sürücü.",
       "Mechanical lead and captain at The Koç School; driver on the BİLSEM team.",
     ),
     detail: t(
       "CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım. Mekanik tasarım ve üretim stratejisini yönetmenin yanı sıra yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum. İşin zor kısmı robot değil, üç takımı aynı takvimde tutmak.",
-      "Competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons. Alongside leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. The hard part isn't the robot — it's keeping three teams on one schedule.",
+      "Competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons. Alongside leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. The hard part is not the robot, it is keeping three teams on one schedule.",
     ),
     tags: [t("FRC", "FRC"), t("Mekanik tasarım", "Mechanical design"), t("Takım liderliği", "Team leadership")],
     accent: ["#C25F14", "#F2A765"],
@@ -238,8 +237,8 @@ export const projects: Project[] = [
     title: t("TEKNOFEST Roketi", "TEKNOFEST Rocket"),
     year: "2024",
     summary: t(
-      "A1 lise kategorisi — en az 4.000 ft irtifa hedefiyle tasarım, üretim ve fırlatma.",
-      "A1 high-school category — design, build and launch targeting a 4,000 ft minimum altitude.",
+      "A1 lise kategorisi: en az 4.000 ft irtifa hedefiyle tasarım, üretim ve fırlatma.",
+      "A1 high-school category: design, build and launch targeting a 4,000 ft minimum altitude.",
     ),
     detail: t(
       "Takım üyesi olarak projenin tasarımdan fırlatmaya kadar tüm yaşam döngüsüne katkı verdim. Bir şeyin tek bir denemede çalışmak zorunda olması, kâğıt üstündeki hesabı ciddiye almayı öğretiyor.",
@@ -263,7 +262,7 @@ export type Milestone = {
 
 export const timeline: Milestone[] = [
   {
-    period: t("2023 —", "2023 —"),
+    period: t("2023'ten beri", "Since 2023"),
     title: t("IB Diploma Adayı", "IB Diploma Candidate"),
     org: t("The Koç School", "The Koç School"),
     body: t(
@@ -281,7 +280,7 @@ export const timeline: Milestone[] = [
     ),
   },
   {
-    period: t("Oca — Şub 2025", "Jan — Feb 2025"),
+    period: t("Ocak-Şubat 2025", "January-February 2025"),
     title: t("Matematiksel Yaratıcılık Kampı", "Mathematical Creativity Camp"),
     org: t("Nesin Matematik Köyü", "Nesin Mathematics Village"),
     body: t(
@@ -290,8 +289,8 @@ export const timeline: Milestone[] = [
     ),
   },
   {
-    period: t("Haz — Ağu 2024", "Jun — Aug 2024"),
-    title: t("Yaz Programı — Exceptional Merit Bursu", "Summer Program — Exceptional Merit Scholarship"),
+    period: t("Haziran-Ağustos 2024", "June-August 2024"),
+    title: t("Yaz Programı, Exceptional Merit Bursu", "Summer Program, Exceptional Merit Scholarship"),
     org: t("Cambridge Üniversitesi", "Cambridge University"),
     body: t(
       "Yapay zekâ, biyonik mühendislik, hassas tıp ve iklim değişikliği. Biyonik kol ve çizgi izleyen robot burada çıktı.",
@@ -343,7 +342,7 @@ export const service: {
   body: Localized;
 }[] = [
   {
-    period: t("2024 —", "2024 —"),
+    period: t("2024'ten beri", "Since 2024"),
     title: t("Mentor", "Mentor"),
     org: t("LGS Arkadaşım", "LGS Arkadaşım Initiative"),
     body: t(
@@ -352,9 +351,9 @@ export const service: {
     ),
   },
   {
-    period: t("Ara 2024 — Oca 2025", "Dec 2024 — Jan 2025"),
+    period: t("Aralık 2024-Ocak 2025", "December 2024-January 2025"),
     title: t("Gönüllü", "Volunteer"),
-    org: t("KAÇUV — Kanserli Çocuklara Umut Vakfı", "KAÇUV — Hope Foundation for Children with Cancer"),
+    org: t("KAÇUV (Kanserli Çocuklara Umut Vakfı)", "KAÇUV (Hope Foundation for Children with Cancer)"),
     body: t(
       "Maraton etkinliklerinde farkındalık ve bağış topladım, kampanyayı sosyal medyada yaydım.",
       "Raised awareness and donations at city marathon events, and amplified the campaign on social media.",
@@ -363,7 +362,7 @@ export const service: {
 ];
 
 /* -------------------------------------------------------------------------- */
-/*  MİNİ OYUN — "Beni ne kadar tanıyorsun?"                                   */
+/*  MİNİ OYUN: "Beni ne kadar tanıyorsun?"                                   */
 /* -------------------------------------------------------------------------- */
 
 export type QuizItem = {
@@ -376,8 +375,7 @@ export type QuizItem = {
 /**
  * Doğru iddialar CV'den geliyor. Yalanlar (robotu altı yaşında tek başına
  * yapmak, roketin 10.000 fite çıkması, yüzmede Türkiye şampiyonluğu)
- * Göktürk tarafından "bunların hiçbiri bende doğru değil" diye onaylandı —
- * oyunun çalışması için tam olarak gereken şey bu.
+ * Göktürk tarafından "bunların hiçbiri bende doğru değil" diye onaylandı: * oyunun çalışması için tam olarak gereken şey bu.
  */
 export const quiz: QuizItem[] = [
   {
@@ -397,8 +395,8 @@ export const quiz: QuizItem[] = [
     ],
     lieIndex: 2,
     reveal: t(
-      "İlk ciddi robotum FRC takımıyla oldu. Öncesinde bol bol söküp taktım ama tek başıma değil — robotik benim için hep takım işi.",
-      "My first serious robot came with the FRC team. Before that I took plenty of things apart, but never alone — robotics has always been teamwork for me.",
+      "İlk ciddi robotum FRC takımıyla oldu. Öncesinde bol bol söküp taktım ama tek başıma değil; robotik benim için hep takım işi.",
+      "My first serious robot came with the FRC team. Before that I took plenty of things apart, but never alone; robotics has always been teamwork for me.",
     ),
   },
   {
@@ -418,8 +416,8 @@ export const quiz: QuizItem[] = [
     ],
     lieIndex: 0,
     reveal: t(
-      "Kategorimiz A1'di, hedef en az 4.000 fit. 10.000 fit bambaşka bir lig — ve o ligde henüz değiliz.",
-      "We were in the A1 category, targeting a 4,000 ft minimum. 10,000 feet is a different league — one we're not in yet.",
+      "Kategorimiz A1'di, hedef en az 4.000 fit. 10.000 fit bambaşka bir lig ve o ligde henüz değiliz.",
+      "We were in the A1 category, targeting a 4,000 ft minimum. 10,000 feet is a different league, and we are not in it yet.",
     ),
   },
   {
@@ -502,7 +500,7 @@ export const ui = {
     contact: t("Konuşalım", "Let's talk"),
     contactSub: t(
       "Bir fikrin, bir projen ya da sadece bir sorun varsa yaz.",
-      "If you have an idea, a project, or just a question — write.",
+      "If you have an idea, a project, or just a question, write.",
     ),
   },
   game: {
@@ -519,8 +517,8 @@ export const ui = {
   chat: {
     title: t("Bana beni sor", "Ask me about me"),
     subtitle: t(
-      "Göktürk'ü tanıyan bir asistan. Projeleri, okuduğu şeyler, çalışma şekli — ne merak ediyorsan.",
-      "An assistant that knows Göktürk. His projects, what he studies, how he works — whatever you're curious about.",
+      "Göktürk'ü tanıyan bir asistan. Projeleri, okuduğu şeyler, çalışma şekli: ne merak ediyorsan.",
+      "An assistant that knows Göktürk. His projects, what he studies, how he works: whatever you are curious about.",
     ),
     placeholder: t("Bir şey sor…", "Ask something…"),
     send: t("Gönder", "Send"),
@@ -537,8 +535,8 @@ export const ui = {
       t("Onunla nasıl iletişime geçerim?", "How do I get in touch?"),
     ],
     disclaimer: t(
-      "Bu bir yapay zekâ. Yanılabilir — önemli şeyleri doğrudan sor.",
-      "This is an AI. It can be wrong — ask him directly for anything important.",
+      "Bu bir yapay zekâ. Yanılabilir, önemli şeyleri doğrudan sor.",
+      "This is an AI. It can be wrong, so ask him directly for anything important.",
     ),
   },
   palette: {

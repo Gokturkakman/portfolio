@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   INK & EMBER — tasarım sistemi
+   INK & EMBER: tasarım sistemi
    Sıcak isli-siyah zemin, kor turuncusu vurgu, kâğıt beyazı metin.
    Açık temada aynı palet "mürekkep üstü kâğıt" olarak yeniden okunur.
    ========================================================================== */
@@ -9,7 +9,7 @@
 :root {
   color-scheme: dark;
 
-  /* Yüzeyler — mavi-siyah değil, sıcak isli siyah */
+  /* Yüzeyler: mavi-siyah değil, sıcak isli siyah */
   --ink-000: #080807;
   --ink-050: #0d0c0a;
   --ink-100: #141210;
@@ -41,7 +41,7 @@
   --selection: rgb(232 133 58 / 0.3);
   --grain-opacity: 0.055;
 
-  /* Hareket — tek yerden kontrol */
+  /* Hareket: tek yerden kontrol */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-fast: 180ms;
@@ -120,7 +120,7 @@ body {
   color: var(--fg);
 }
 
-/* Zemin dokusu — düz siyahın "ucuz" görünmesini engeller.
+/* Zemin dokusu: düz siyahın "ucuz" görünmesini engeller.
    Not: `mix-blend-mode` bilerek kullanılmıyor. Tam ekran sabit bir katmanda
    blend modu tüm sayfayı tek bir kompozisyon katmanına zorluyor; bazı
    GPU'larda kaydırma takılıyor, bazılarında sayfa hiç boyanmıyor. */
@@ -133,7 +133,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Odak halkası — klavyeyle gezenler için net */
+/* Odak halkası: klavyeyle gezenler için net */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -240,7 +240,7 @@ body {
   border: 0;
 }
 
-/* Hero girişi — CSS ile, JS'e bağlı değil. `both` sayesinde animasyon
+/* Hero girişi: CSS ile, JS'e bağlı değil. `both` sayesinde animasyon
    çalışmasa bile öğe son (görünür) durumunda kalır. */
 @keyframes intro-rise {
   from {
@@ -258,7 +258,7 @@ body {
   animation-delay: var(--intro-delay, 0s);
 }
 
-/* Reveal — JS yalnızca sınıf ekliyor, geçiş burada.
+/* Reveal: JS yalnızca sınıf ekliyor, geçiş burada.
    `reveal-armed` gelmezse blok zaten görünür durumda kalır. */
 .reveal-armed {
   opacity: 0;
