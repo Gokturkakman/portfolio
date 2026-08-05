@@ -30,7 +30,7 @@ uyuyor.
 | Stil | Tailwind v4 + CSS değişkenleri | Renk/hareket tokenları `:root` içinde tek yerde. Tema değişimi tek bir `data-theme` niteliğiyle oluyor, JS'te renk hesabı yok. |
 | Animasyon | Framer Motion | Layout animasyonları (nav'daki aktif çizgi), giriş/çıkış (`AnimatePresence`) ve yükseklik geçişleri için. |
 | Parçacıklar | **Ham Canvas 2D** (Three.js değil) | Bkz. §4: bilinçli bir karar. |
-| LLM | `@anthropic-ai/sdk`, `claude-opus-5` | Streaming yanıt, sistem promptu önbelleğe alınmış. Model `.env` ile değiştirilebilir. |
+| LLM | `@google/genai`, `gemini-2.5-flash` | Streaming yanıt. Gemini'nin ücretsiz katmanı var: kredi kartı ya da bakiye gerekmiyor, sadece dakika/gün başına istek sınırı var. Bir lise öğrencisinin sürekli işletmesi gereken bir site için doğru seçim buydu. Model `.env` ile değiştirilebilir. |
 
 **Bilerek kullanılmayanlar:** hazır tema, UI kütüphanesi (shadcn vb.), state yöneticisi, i18n paketi. Sitenin tamamı ~10 bileşen; bir bağımlılığın maliyeti faydasından büyük olurdu.
 
@@ -142,26 +142,32 @@ Bir portfolyo sitesinin ömrü boyunca değişen şey **içeriktir**, tasarım d
 ## 6. Asistan ("Bana beni sor")
 
 ```
-Tarayıcı                     Sunucu (Next route handler)      Anthropic
+Tarayıcı                     Sunucu (Next route handler)      Gemini
    │                                  │                           │
    ├── POST /api/chat ───────────────►│                           │
    │   {messages, lang}               ├─ hız sınırı (12/dk/IP)    │
    │                                  ├─ mesaj kırpma (24 × 1200) │
    │                                  ├─ profile.ts → sistem promptu
-   │                                  ├─ messages.stream() ──────►│
-   │◄─── text/plain akış ─────────────┤◄──── text_delta ──────────┤
+   │                                  ├─ generateContentStream() ►│
+   │◄─── text/plain akış ─────────────┤◄──── chunk.text ──────────┤
    └─ token token ekrana yazılır      │                           │
 ```
 
 **Kararlar:**
 
-- **Anahtar yalnızca sunucuda.** `ANTHROPIC_API_KEY` hiçbir zaman istemciye gitmiyor.
-- **Sistem promptu `profile.ts`'ten üretiliyor.** Elle tutulan ikinci bir "bio" kopyası yok: içerik güncellenince asistan da güncelleniyor.
-- **`cache_control: ephemeral`** sistem promptunda: her istekte aynı olduğu için hem ucuzluyor hem ilk token daha hızlı geliyor.
-- **`effort: "low"`** - kısa biyografik cevaplar için yeterli; gecikmeyi ve maliyeti düşürüyor.
+- **Neden Claude değil Gemini:** İlk sürüm Claude API üstündeydi, ama hesapta
+  kredi olmayınca canlı sitede asistan hiç çalışmıyordu. Gemini'nin ücretsiz
+  katmanı var: kredi kartı ya da bakiye gerekmeden dakika/gün başına bir
+  istek sınırıyla çalışıyor. Bir lise öğrencisinin kendi başına işletmesi
+  gereken bir site için bu, sürekli ödeme takibi gerektiren bir modelden
+  daha doğru bir seçim.
+- **Anahtar yalnızca sunucuda.** `GEMINI_API_KEY` hiçbir zaman istemciye gitmiyor.
+- **Sistem promptu `profile.ts`'ten üretiliyor.** Elle tutulan ikinci bir "bio" kopyası yok: içerik güncellenince asistan da güncelleniyor. `buildSystemPrompt()` sağlayıcıdan bağımsız; sadece bir metin döndürüyor, bu yüzden Claude'dan Gemini'ye geçerken hiç değişmedi.
+- **Rol eşlemesi:** Gemini `user`/`model` rolleri kullanıyor, Anthropic `user`/`assistant` kullanıyordu. İstemci tarafı (`ChatDock.tsx`) hâlâ `assistant` gönderiyor; dönüşüm yalnızca `route.ts` içinde, tek satırda yapılıyor.
 - **Hız sınırı** basit, bellek içi bir sayaç. Tek sunucu örneği için yeterli; birden fazla örnekte Upstash gibi harici bir sayaç gerekir (kodda not düşüldü).
 - **Prompt enjeksiyonuna karşı:** sistem promptu, ziyaretçi metnini talimat olarak kabul etmemesini açıkça söylüyor.
 - **Anahtar yoksa** site tamamen çalışıyor; sadece sohbet penceresi "yapılandırılmamış" diyor. Demo hiçbir koşulda kırılmıyor.
+- **SDK doğrulaması:** `@google/genai` için `ai.google.dev` sayfaları WebFetch'te tutarsız/halüsinasyonlu sonuçlar verdi (var olmayan bir "Interactions API" ve `gemini-3.6-flash` modeli uydurdu). Karar, GitHub'daki ham SDK kaynağından (`sdk-samples/*.ts`, `src/errors.ts`, `src/client.ts`) doğrulanan koda dayanıyor, dokümantasyon sayfalarına değil.
 
 ---
 
@@ -194,11 +200,11 @@ Standart `initial={{opacity: 0}} + whileInView` deseninin sessiz bir hatası var
 
 ```bash
 npm install
-cp .env.example .env.local     # ANTHROPIC_API_KEY'i doldur
+cp .env.example .env.local     # GEMINI_API_KEY'i doldur
 npm run dev
 ```
 
-Yayına almak için: repoyu Vercel'e bağla, `ANTHROPIC_API_KEY` ortam değişkenini ekle.
+Yayına almak için: repoyu Vercel'e bağla, `GEMINI_API_KEY` ortam değişkenini ekle.
 
 ---
 

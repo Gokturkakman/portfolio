@@ -1,7 +1,8 @@
 # Göktürk Akman: Kişisel Website
 
 Sıfırdan yazılmış kişisel site. Parçacıklarla çizilen hero, iki dil, iki tema,
-⌘K komut paleti, "iki doğru bir yalan" mini oyunu ve CV'yi bilen bir AI asistan.
+⌘K komut paleti, "iki doğru bir yalan" mini oyunu ve CV'yi bilen, Gemini
+üstünde çalışan bir AI asistan.
 
 Mimari kararlar ve gerekçeleri: **[plan.md](./plan.md)**
 
@@ -17,10 +18,10 @@ npm run dev
 
 `http://localhost:3000`
 
-Asistanın çalışması için `.env.local` içine bir Claude API anahtarı gerekiyor
-([console.anthropic.com](https://console.anthropic.com/settings/keys)).
-**Anahtar olmadan da site tam çalışır** - sadece sohbet penceresi
-"yapılandırılmamış" der.
+Asistanın çalışması için `.env.local` içine bir Gemini API anahtarı gerekiyor
+([aistudio.google.com/apikey](https://aistudio.google.com/apikey), ücretsiz,
+kredi kartı istemiyor). **Anahtar olmadan da site tam çalışır**: sadece
+sohbet penceresi "yapılandırılmamış" der.
 
 ---
 
@@ -79,8 +80,8 @@ GitHub push'unu otomatik deploy'a bağlamak istersen:
 üzerinden GitHub uygulamasını yetkilendirip repoyu bağla (bu adım tarayıcı
 onayı istiyor, CLI'dan yapılamıyor).
 
-**Ortam değişkeni:** `ANTHROPIC_API_KEY`, Vercel proje ayarlarında henüz
-yok. Asistanın canlı sitede çalışması için ekle:
+**Ortam değişkeni:** `GEMINI_API_KEY`, Vercel proje ayarlarında henüz yok.
+Asistanın canlı sitede çalışması için ekle:
 [vercel.com/goektuerk-s-projects/portfolio/settings/environment-variables](https://vercel.com/goektuerk-s-projects/portfolio/settings/environment-variables)
 sonra `vercel --prod` ile yeniden deploy et.
 
@@ -99,4 +100,4 @@ npm run lint    # eslint
 
 ## Yığın
 
-Next.js 16 · TypeScript · Tailwind v4 · Framer Motion · Canvas 2D · Claude API
+Next.js 16 · TypeScript · Tailwind v4 · Framer Motion · Canvas 2D · Gemini API

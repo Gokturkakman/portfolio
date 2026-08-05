@@ -1,12 +1,16 @@
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenAI, ApiError } from "@google/genai";
 import { buildSystemPrompt } from "@/lib/assistant-prompt";
 import type { Lang } from "@/content/profile";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/** İstersen .env üzerinden başka bir modele geçebilirsin (örn. claude-sonnet-5). */
-const MODEL = process.env.ANTHROPIC_MODEL ?? "claude-opus-5";
+/**
+ * Gemini. Claude'un aksine ücretsiz katmanı var: kredi kartı ya da bakiye
+ * gerekmiyor, sadece dakika/gün başına bir istek sınırı var.
+ * İstersen .env üzerinden başka bir modele geçebilirsin.
+ */
+const MODEL = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
 
 const MAX_MESSAGES = 24;
 const MAX_CHARS = 1200;
@@ -37,7 +41,7 @@ function rateLimited(ip: string): boolean {
 type ClientMessage = { role: "user" | "assistant"; content: string };
 
 /**
- * Anthropic hatalarını ziyaretçiye gösterilebilir bir cümleye çevirir.
+ * Gemini hatalarını ziyaretçiye gösterilebilir bir cümleye çevirir.
  *
  * Ziyaretçiye teknik detay ya da hesap bilgisi sızdırmıyoruz; ama sunucu
  * günlüğüne sebebi net yazıyoruz ki siteyi kuran kişi ne yapacağını bilsin.
@@ -46,32 +50,12 @@ function describeError(err: unknown): {
   log: string;
   message: Record<Lang, string>;
 } {
-  const status = err instanceof Anthropic.APIError ? err.status : undefined;
+  const status = err instanceof ApiError ? err.status : undefined;
   const text = err instanceof Error ? err.message : String(err);
 
-  if (/credit balance is too low/i.test(text)) {
+  if (status === 429 || /quota|resource_exhausted/i.test(text)) {
     return {
-      log: "KREDİ YETERSİZ: console.anthropic.com > Plans & Billing üzerinden kredi yükleyin.",
-      message: {
-        tr: "Asistan şu anda kullanılamıyor. Sorunu doğrudan e-postayla iletebilirsin.",
-        en: "The assistant is unavailable right now. Feel free to email him directly.",
-      },
-    };
-  }
-
-  if (status === 401 || status === 403) {
-    return {
-      log: "ANAHTAR GEÇERSİZ: .env.local içindeki ANTHROPIC_API_KEY'i kontrol edin.",
-      message: {
-        tr: "Asistan şu anda kullanılamıyor. Sorunu doğrudan e-postayla iletebilirsin.",
-        en: "The assistant is unavailable right now. Feel free to email him directly.",
-      },
-    };
-  }
-
-  if (status === 429) {
-    return {
-      log: "HIZ SINIRI: Anthropic tarafında istek sınırına takıldı.",
+      log: "KOTA DOLDU: Gemini ücretsiz katmanının dakika/gün sınırına takıldı.",
       message: {
         tr: "Şu an çok yoğunum. Bir dakika sonra tekrar dener misin?",
         en: "Things are busy right now. Mind trying again in a minute?",
@@ -79,9 +63,19 @@ function describeError(err: unknown): {
     };
   }
 
+  if (status === 400 || status === 403 || /api key not valid|api_key_invalid/i.test(text)) {
+    return {
+      log: "ANAHTAR GEÇERSİZ: .env.local içindeki GEMINI_API_KEY'i kontrol edin (aistudio.google.com/apikey).",
+      message: {
+        tr: "Asistan şu anda kullanılamıyor. Sorunu doğrudan e-postayla iletebilirsin.",
+        en: "The assistant is unavailable right now. Feel free to email him directly.",
+      },
+    };
+  }
+
   if (status && status >= 500) {
     return {
-      log: `SUNUCU HATASI (${status}): Anthropic tarafında geçici sorun.`,
+      log: `SUNUCU HATASI (${status}): Gemini tarafında geçici sorun.`,
       message: {
         tr: "Geçici bir aksaklık oldu. Birazdan tekrar dener misin?",
         en: "That was a temporary hiccup. Mind trying again shortly?",
@@ -99,14 +93,14 @@ function describeError(err: unknown): {
 }
 
 export async function POST(req: Request) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
     return Response.json(
       {
         error: "missing_key",
         message:
-          "Asistan yapılandırılmamış. .env.local dosyasına ANTHROPIC_API_KEY ekle.",
+          "Asistan yapılandırılmamış. .env.local dosyasına GEMINI_API_KEY ekle.",
       },
       { status: 503 },
     );
@@ -148,42 +142,45 @@ export async function POST(req: Request) {
     return Response.json({ error: "bad_request" }, { status: 400 });
   }
 
-  // Sohbet penceresinde bekleyen biri var: varsayılan 10 dakikalık zaman aşımı
-  // burada anlamsız. 45 saniyede cevap gelmediyse hata göstermek daha dürüst.
-  const client = new Anthropic({ apiKey, timeout: 45_000, maxRetries: 1 });
+  // Sohbet penceresinde bekleyen biri var: varsayılan zaman aşımı burada
+  // anlamsız. 45 saniyede cevap gelmediyse hata göstermek daha dürüst.
+  const ai = new GoogleGenAI({ apiKey, httpOptions: { timeout: 45_000 } });
+
+  // Gemini "user" / "model" rolü kullanıyor; istemciden gelen "assistant"ı
+  // buna çeviriyoruz. Sistem promptu ayrı bir alanda (config.systemInstruction),
+  // konuşma geçmişine karışmıyor.
+  const contents = messages.map((m) => ({
+    role: m.role === "assistant" ? ("model" as const) : ("user" as const),
+    parts: [{ text: m.content }],
+  }));
 
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       try {
-        const run = client.messages.stream({
+        const result = await ai.models.generateContentStream({
           model: MODEL,
-          max_tokens: 2048,
-          system: [
-            {
-              type: "text",
-              text: buildSystemPrompt(lang),
-              // Sistem promptu her istekte aynı: önbelleğe alınca
-              // hem ucuzluyor hem ilk token daha hızlı geliyor.
-              cache_control: { type: "ephemeral" },
-            },
-          ],
-          output_config: { effort: "low" },
-          messages,
+          contents,
+          config: {
+            systemInstruction: buildSystemPrompt(lang),
+          },
         });
 
-        for await (const event of run) {
-          if (
-            event.type === "content_block_delta" &&
-            event.delta.type === "text_delta"
-          ) {
-            controller.enqueue(encoder.encode(event.delta.text));
+        let sawText = false;
+        let finishReason: string | undefined;
+
+        for await (const chunk of result) {
+          if (chunk.text) {
+            sawText = true;
+            controller.enqueue(encoder.encode(chunk.text));
           }
+          finishReason = chunk.candidates?.[0]?.finishReason ?? finishReason;
         }
 
-        const final = await run.finalMessage();
-        if (final.stop_reason === "refusal") {
+        // Güvenlik filtresi ya da benzeri bir sebeple tek karakter bile
+        // gelmediyse ziyaretçiyi sessizlikte bırakmayalım.
+        if (!sawText && finishReason && finishReason !== "STOP") {
           controller.enqueue(
             encoder.encode(
               lang === "tr"
@@ -195,8 +192,8 @@ export async function POST(req: Request) {
       } catch (err) {
         // Akış başladıktan sonra HTTP durum kodunu değiştiremeyiz, o yüzden
         // hata metin olarak gönderiliyor. Ama hangi hata olduğunu ayırt etmek
-        // önemli: "kredi yetersiz" ile "internet gitti" farklı şeyler ve
-        // ikisine de "bağlantı koptu" demek kimseye yardımcı olmuyor.
+        // önemli: "kota doldu" ile "internet gitti" farklı şeyler ve ikisine
+        // de "bağlantı koptu" demek kimseye yardımcı olmuyor.
         const reason = describeError(err);
         console.error(`[chat] ${reason.log}`, err);
         controller.enqueue(encoder.encode(`\n\n(${reason.message[lang]})`));
