@@ -63,10 +63,26 @@ Renkleri değiştirmek için: `src/app/globals.css` içindeki `:root` blokları.
 
 ## Yayına alma
 
-1. Repoyu GitHub'a gönder
-2. [vercel.com/new](https://vercel.com/new) üzerinden içe aktar
-3. Ortam değişkeni ekle: `ANTHROPIC_API_KEY`
-4. Deploy
+**Canlı:** https://portfolio-goektuerk-s-projects.vercel.app
+**Repo:** https://github.com/Gokturkakman/portfolio
+
+Site şu an Vercel'de yayında, `vercel --prod` ile Vercel CLI üzerinden
+deploy edildi. Vercel projesi henüz GitHub'a bağlı değil, yani `main`'e
+her push otomatik deploy tetiklemiyor; değişiklik sonrası elle çalıştır:
+
+```bash
+vercel --prod
+```
+
+GitHub push'unu otomatik deploy'a bağlamak istersen:
+[vercel.com/goektuerk-s-projects/portfolio/settings/git](https://vercel.com/goektuerk-s-projects/portfolio/settings/git)
+üzerinden GitHub uygulamasını yetkilendirip repoyu bağla (bu adım tarayıcı
+onayı istiyor, CLI'dan yapılamıyor).
+
+**Ortam değişkeni:** `ANTHROPIC_API_KEY`, Vercel proje ayarlarında henüz
+yok. Asistanın canlı sitede çalışması için ekle:
+[vercel.com/goektuerk-s-projects/portfolio/settings/environment-variables](https://vercel.com/goektuerk-s-projects/portfolio/settings/environment-variables)
+sonra `vercel --prod` ile yeniden deploy et.
 
 ---
 
