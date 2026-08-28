@@ -108,17 +108,17 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Portre: bu bloğun (isimden sonraki) sağ-alt köşesinde, yatay dikdörtgen */}
+          {/* Portre: yandaki metinle üst çizgisi hizalı, yatay dikdörtgen */}
           <div
-            className="intro surface absolute bottom-0 right-0 hidden w-72 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block lg:h-40 xl:h-48 xl:w-[26rem]"
+            className="intro surface absolute right-0 top-0 hidden w-80 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block lg:h-56 xl:h-64 xl:w-[30rem]"
             style={step(1)}
           >
             <Image
               src="/portrait.jpg"
               alt={identity.name}
               fill
-              sizes="(min-width: 1280px) 26rem, 18rem"
-              className="scale-110 object-cover object-[46%_30%]"
+              sizes="(min-width: 1280px) 30rem, 20rem"
+              className="scale-110 object-cover object-[46%_38%]"
               priority
             />
           </div>
