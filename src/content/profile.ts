@@ -128,8 +128,8 @@ export const about = {
       "I study at The Koç School in Istanbul as an IB Diploma candidate. I take physics, maths and business at higher level. But I only feel like I have actually learned something once I have tried to build it myself.",
     ),
     t(
-      "O yüzden fırsat buldukça yeni bir alana giriyorum. Cambridge'de hidrolikle çalışan bir biyonik kol prototipi yaptım, Arduino ile çizgi izleyen bir robot programladım. TEKNOFEST'te roket takımındaydım, FRC'de robotik takımının kaptanıyım, üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum. Şu an bir arkadaşımla sosyal ağ uygulaması geliştiriyorum.",
-      "So whenever I get the chance, I step into a new field. At Cambridge I built a hydraulic bionic arm prototype and programmed a line-tracking robot with Arduino. I was on the rocket team at TEKNOFEST, I captain my school's FRC robotics team, and I have studied digital design at BİLSEM since third grade. Right now I am building a social networking app with a friend.",
+      "O yüzden fırsat buldukça yeni bir alana giriyorum. Cambridge'de hidrolikle çalışan bir biyonik kol prototipi yaptım, Arduino ile çizgi izleyen bir robot programladım. TEKNOFEST'te roket takımındaydım, RAMs Robotics'te kulüp başkanıyım, üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum. Şu an Solvenix adında bir sosyal ağ uygulaması geliştiriyorum.",
+      "So whenever I get the chance, I step into a new field. At Cambridge I built a hydraulic bionic arm prototype and programmed a line-tracking robot with Arduino. I was on the rocket team at TEKNOFEST, I'm club president of RAMs Robotics, and I have studied digital design at BİLSEM since third grade. Right now I am building a social networking app called Solvenix.",
     ),
     t(
       "Hepsinin ortak noktası sonuç değil, süreç. Yeni bir konuya sıfırdan başlamanın, bir yerde takılıp orada debelenmenin ve sonunda işin nasıl yürüdüğünü anlamanın keyfi bende hep aynı. Kendimi tek bir alanla tanımlamamamın sebebi de bu; şu an en çok vaktimi biyomedikal mühendislik, robotik ve yapay zekâya ayırıyorum.",
@@ -172,15 +172,15 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "social-app",
-    title: t("Sosyal Ağ Uygulaması", "Social Networking App"),
-    year: "2026→",
+    title: t("Solvenix", "Solvenix"),
+    year: "2025→",
     summary: t(
-      "Alman Lisesi'nden bir arkadaşımla kurduğum, fikirden koda kadar birlikte götürdüğümüz uygulama.",
-      "An app I co-founded with a student from Alman Lisesi, carried from idea to code together.",
+      "Solvenix adını verdiğimiz, Alman Lisesi'nden bir arkadaşımla kurduğum uygulama: fikirden koda kadar birlikte götürüyoruz.",
+      "Solvenix, an app I co-founded with a student from Alman Lisesi: we've carried it from idea to code together.",
     ),
     detail: t(
-      "Kurucu ortak ve geliştirici olarak ürün tasarımından yazılım mimarisine kadar tüm süreçte yer alıyorum. İki farklı okuldan çalışmak, işi bölmeyi ve yazılı iletişimi ciddiye almayı öğretti.",
-      "As co-founder and developer I'm involved across the whole cycle, from product design to software architecture. Working across two different schools taught me to split work properly and take written communication seriously.",
+      "Solvenix'in kurucu ortağı ve geliştiricisi olarak ürün tasarımından yazılım mimarisine kadar tüm süreçte yer alıyorum. İki farklı okuldan çalışmak, işi bölmeyi ve yazılı iletişimi ciddiye almayı öğretti.",
+      "As co-founder and developer of Solvenix I'm involved across the whole cycle, from product design to software architecture. Working across two different schools taught me to split work properly and take written communication seriously.",
     ),
     tags: [t("JavaScript", "JavaScript"), t("Ürün tasarımı", "Product design"), t("Yazılım mimarisi", "Architecture")],
     accent: ["#E8853A", "#F2C14E"],
@@ -219,17 +219,17 @@ export const projects: Project[] = [
   },
   {
     id: "frc",
-    title: t("FRC Yarışma Robotu", "FRC Competition Robot"),
+    title: t("RAMs Robotics #7729", "RAMs Robotics #7729"),
     year: "2024-2026",
     summary: t(
-      "Koç School takımında mekanik lider ve kaptan; BİLSEM takımında sürücü.",
-      "Mechanical lead and captain at The Koç School; driver on the BİLSEM team.",
+      "RAMs Robotics #7729'da kulüp başkanı; Aydos Robotics'te sürücü.",
+      "Club president at RAMs Robotics #7729; driver at Aydos Robotics.",
     ),
     detail: t(
-      "CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım. Mekanik tasarım ve üretim stratejisini yönetmenin yanı sıra yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum. İşin zor kısmı robot değil, üç takımı aynı takvimde tutmak.",
-      "Competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons. Alongside leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. The hard part is not the robot, it is keeping three teams on one schedule.",
+      "RAMs Robotics'e üye olarak başladım, sırasıyla Mekanik Kaptan, Takım Lideri ve şu an Kulüp Başkanı oldum. CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım; mekanik tasarım ve üretim stratejisinin yanında yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum. Ayrıca Aydos Robotics'te sürücüyüm. İşin zor kısmı robot değil, birden fazla takımı aynı takvimde tutmak.",
+      "I started as a member at RAMs Robotics, then became Mechanical Captain, Team Lead, and now Club President. I competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons; besides leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. I'm also a driver at Aydos Robotics. The hard part is not the robot, it's keeping more than one team on the same schedule.",
     ),
-    tags: [t("FRC", "FRC"), t("Mekanik tasarım", "Mechanical design"), t("Takım liderliği", "Team leadership")],
+    tags: [t("FRC", "FRC"), t("Mekanik tasarım", "Mechanical design"), t("Kulüp Başkanlığı", "Club leadership")],
     accent: ["#C25F14", "#F2A765"],
   },
   {
@@ -323,7 +323,12 @@ export const stack: { group: Localized; items: Localized[] }[] = [
   },
   {
     group: t("Tasarım", "Design"),
-    items: [t("Dijital tasarım", "Digital design"), t("Görsel sanatlar", "Visual arts"), t("AutoDesk", "AutoDesk")],
+    items: [
+      t("Dijital tasarım", "Digital design"),
+      t("Görsel sanatlar", "Visual arts"),
+      t("AutoDesk", "AutoDesk"),
+      t("Unreal Engine 5", "Unreal Engine 5"),
+    ],
   },
   {
     group: t("Araştırma", "Research"),
@@ -348,6 +353,15 @@ export const service: {
     body: t(
       "Maddi imkânı kısıtlı, başarılı öğrencilere LGS yılı boyunca mentorluk. Kişiye özel çalışma planı, akademik ve moral destek, ilerleme takibi.",
       "Mentoring high-achieving students from low-income backgrounds through their LGS exam year: personalised study plans, academic and emotional support, progress tracking.",
+    ),
+  },
+  {
+    period: t("2024'ten beri", "Since 2024"),
+    title: t("Gönüllü", "Volunteer"),
+    org: t("CommUnity WE", "CommUnity WE"),
+    body: t(
+      "Kâr amacı gütmeyen toplum projelerinde düzenli gönüllü çalışma.",
+      "Ongoing volunteer work with nonprofit community projects.",
     ),
   },
   {
@@ -456,8 +470,10 @@ export const assistantNotes = `
 - Kendini "hayat boyu öğrenici" olarak tanımlar; tek bir alana kilitlenmeyi sevmez.
 - En çok ilgilendiği alanlar: biyomedikal mühendislik, robotik, yapay zekâ/makine
   öğrenmesi, giyilebilir teknoloji, sürdürülebilir teknoloji, girişimcilik.
-- Robotikte hem teknik hem organizasyonel rolleri var; koordinasyon tarafını
-  robotun kendisi kadar ciddiye alır.
+- RAMs Robotics #7729'da kulüp başkanı (önce Mekanik Kaptan, sonra Takım
+  Lideri oldu); Aydos Robotics'te sürücü. Koordinasyon tarafını robotun
+  kendisi kadar ciddiye alır.
+- Solvenix adlı sosyal ağ uygulamasının kurucu ortağı (Haziran 2025'ten beri).
 - TÜBİTAK Fizik Olimpiyatları'na hazırlanıyor (kinematik, termodinamik,
   elektromanyetizma, modern fizik).
 - Galatasaray 100. Yıl Interact Kulübü'nde aktif üye ve başkan adayı.
