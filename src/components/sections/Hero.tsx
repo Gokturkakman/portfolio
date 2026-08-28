@@ -109,7 +109,7 @@ export default function Hero() {
 
           {/* Portre: sağdaki boş alanda, büyük */}
           <div
-            className="intro surface absolute right-0 top-1/2 hidden aspect-square w-64 -translate-y-1/2 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block xl:w-80"
+            className="intro surface absolute right-12 top-1/2 hidden aspect-square w-64 -translate-y-1/2 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block xl:right-16 xl:w-80"
             style={step(1)}
           >
             <Image
@@ -117,7 +117,7 @@ export default function Hero() {
               alt={identity.name}
               fill
               sizes="(min-width: 1280px) 20rem, 16rem"
-              className="scale-125 object-cover object-[30%_28%]"
+              className="scale-110 object-cover object-[46%_38%]"
               priority
             />
           </div>
