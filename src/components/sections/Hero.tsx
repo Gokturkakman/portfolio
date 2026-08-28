@@ -55,8 +55,9 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Tanıtım cümlesi + eylemler: sağdaki boş alanda büyük bir portre var */}
-        <div className="relative">
+        {/* Tanıtım cümlesi + eylemler: isim bittikten SONRA başlıyor, bu yüzden
+            portre bu blok içinde nereye konsa isme değme ihtimali sıfır. */}
+        <div className="relative lg:min-h-[24rem]">
           <p
             className="intro mt-10 max-w-2xl text-pretty text-lg leading-relaxed text-fg-dim sm:text-xl"
             style={step(2)}
@@ -106,21 +107,21 @@ export default function Hero() {
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Portre: sağdaki boş alan boyunca, isim altından buton sırasına kadar */}
-        <div
-          className="intro surface absolute right-12 top-24 bottom-0 hidden w-56 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block xl:right-16 xl:w-64"
-          style={step(1)}
-        >
-          <Image
-            src="/portrait.jpg"
-            alt={identity.name}
-            fill
-            sizes="(min-width: 1280px) 16rem, 14rem"
-            className="scale-110 object-cover object-[46%_30%]"
-            priority
-          />
+          {/* Portre: bu bloğun (isimden sonraki) sağ-alt köşesinde, yatay dikdörtgen */}
+          <div
+            className="intro surface absolute bottom-0 right-0 hidden w-72 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block lg:h-40 xl:h-48 xl:w-[26rem]"
+            style={step(1)}
+          >
+            <Image
+              src="/portrait.jpg"
+              alt={identity.name}
+              fill
+              sizes="(min-width: 1280px) 26rem, 18rem"
+              className="scale-110 object-cover object-[46%_30%]"
+              priority
+            />
+          </div>
         </div>
       </div>
 
