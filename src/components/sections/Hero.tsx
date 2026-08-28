@@ -34,24 +34,9 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-[92rem] px-[var(--gutter)]">
-        {/* Portre: köşede, çerçeveli */}
-        <div
-          className="intro surface absolute right-[var(--gutter)] top-0 h-14 w-14 overflow-hidden rounded-2xl shadow-[0_8px_32px_-8px_var(--glow)] sm:h-20 sm:w-20 lg:h-24 lg:w-24"
-          style={step(0)}
-        >
-          <Image
-            src="/portrait.jpg"
-            alt={identity.name}
-            fill
-            sizes="(min-width: 1024px) 6rem, (min-width: 640px) 5rem, 3.5rem"
-            className="object-cover"
-            priority
-          />
-        </div>
-
         {/* Üst satır: ünvan + konum */}
         <div
-          className="intro mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 pr-16 sm:pr-24 lg:pr-28"
+          className="intro mb-8 flex flex-wrap items-center gap-x-4 gap-y-2"
           style={step(0)}
         >
           <span className="text-eyebrow">{tr(identity.role)}</span>
@@ -70,55 +55,71 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Tanıtım cümlesi */}
-        <p
-          className="intro mt-10 max-w-2xl text-pretty text-lg leading-relaxed text-fg-dim sm:text-xl"
-          style={step(2)}
-        >
-          {tr(identity.tagline)}
-        </p>
+        {/* Tanıtım cümlesi + eylemler: sağdaki boş alanda büyük bir portre var */}
+        <div className="relative">
+          <p
+            className="intro mt-10 max-w-2xl text-pretty text-lg leading-relaxed text-fg-dim sm:text-xl"
+            style={step(2)}
+          >
+            {tr(identity.tagline)}
+          </p>
 
-        {/* Eylemler */}
-        <div
-          className="intro mt-10 flex flex-wrap items-center gap-3"
-          style={step(3)}
-        >
-          <Magnetic strength={0.24}>
-            <a
-              href="#work"
-              className="group flex items-center gap-2 rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-transform duration-300 hover:scale-[1.03]"
-            >
-              {tr(ui.hero.cta)}
-              <ArrowDown
-                size={15}
-                strokeWidth={2}
-                className="transition-transform duration-300 group-hover:translate-y-0.5"
-              />
-            </a>
-          </Magnetic>
-
-          <Magnetic strength={0.24}>
-            <button
-              onClick={() => setChatOpen(true)}
-              className="ember-glow flex items-center gap-2 rounded-full border border-line-strong px-6 py-3 text-sm font-medium text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
-            >
-              <Sparkles size={14} strokeWidth={2} />
-              {tr(ui.hero.ctaAlt)}
-            </button>
-          </Magnetic>
-
-          <div className="ml-2 flex items-center gap-4">
-            {socials.slice(0, 4).map((s) => (
+          <div
+            className="intro mt-10 flex flex-wrap items-center gap-3"
+            style={step(3)}
+          >
+            <Magnetic strength={0.24}>
               <a
-                key={s.key}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-[12px] text-fg-faint underline-offset-4 transition-colors duration-200 hover:text-accent hover:underline"
+                href="#work"
+                className="group flex items-center gap-2 rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-transform duration-300 hover:scale-[1.03]"
               >
-                {tr(s.label)}
+                {tr(ui.hero.cta)}
+                <ArrowDown
+                  size={15}
+                  strokeWidth={2}
+                  className="transition-transform duration-300 group-hover:translate-y-0.5"
+                />
               </a>
-            ))}
+            </Magnetic>
+
+            <Magnetic strength={0.24}>
+              <button
+                onClick={() => setChatOpen(true)}
+                className="ember-glow flex items-center gap-2 rounded-full border border-line-strong px-6 py-3 text-sm font-medium text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
+              >
+                <Sparkles size={14} strokeWidth={2} />
+                {tr(ui.hero.ctaAlt)}
+              </button>
+            </Magnetic>
+
+            <div className="ml-2 flex items-center gap-4">
+              {socials.slice(0, 4).map((s) => (
+                <a
+                  key={s.key}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-[12px] text-fg-faint underline-offset-4 transition-colors duration-200 hover:text-accent hover:underline"
+                >
+                  {tr(s.label)}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Portre: sağdaki boş alanda, büyük */}
+          <div
+            className="intro surface absolute right-0 top-1/2 hidden aspect-square w-64 -translate-y-1/2 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block xl:w-80"
+            style={step(1)}
+          >
+            <Image
+              src="/portrait.jpg"
+              alt={identity.name}
+              fill
+              sizes="(min-width: 1280px) 20rem, 16rem"
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </div>

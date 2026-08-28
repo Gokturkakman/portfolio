@@ -115,20 +115,6 @@ export const socials: Social[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/*  LINKEDIN GÖNDERİLERİ                                                       */
-/* -------------------------------------------------------------------------- */
-
-/** İletişim bölümündeki yatay şeritte gösterilen gömülü LinkedIn gönderileri. */
-export const linkedinPosts: { urn: string; height: number }[] = [
-  { urn: "urn:li:ugcPost:7496309705905147904", height: 967 },
-  { urn: "urn:li:share:7493326165621895169", height: 645 },
-  { urn: "urn:li:share:7493652554812284928", height: 645 },
-  { urn: "urn:li:ugcPost:7491936860898926594", height: 567 },
-  { urn: "urn:li:share:7490424878542536704", height: 670 },
-  { urn: "urn:li:share:7491068911619325952", height: 489 },
-];
-
-/* -------------------------------------------------------------------------- */
 /*  HAKKIMDA                                                                   */
 /* -------------------------------------------------------------------------- */
 

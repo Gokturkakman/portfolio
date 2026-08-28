@@ -29,7 +29,7 @@ type Particle = {
 };
 
 const MAX_PARTICLES = 6000;
-const POINTER_RADIUS = 90;
+const POINTER_RADIUS = 130;
 /** İtme kuvveti: yüksek tutmak parçacıkları savurup ismi okunmaz yapıyor. */
 const POINTER_FORCE = 210;
 /** Tek karede eklenebilecek en büyük hız; savrulmayı sınırlar. */
