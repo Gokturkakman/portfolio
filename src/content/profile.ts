@@ -387,72 +387,66 @@ export type QuizItem = {
 };
 
 /**
- * Doğru iddialar CV'den geliyor. Yalanlar (robotu altı yaşında tek başına
- * yapmak, roketin 10.000 fite çıkması, yüzmede Türkiye şampiyonluğu)
- * Göktürk tarafından "bunların hiçbiri bende doğru değil" diye onaylandı: * oyunun çalışması için tam olarak gereken şey bu.
+ * CV değil, kişisel/eğlenceli iddialar. Doğrular Göktürk'ün kendi
+ * anlattıklarından geliyor (evcil hayvan geçmişi, hayaller, hedefler);
+ * yalanlar onunla birlikte "bu bende doğru değil" diye onaylandı.
  */
 export const quiz: QuizItem[] = [
   {
     claims: [
+      t("Evde kerevit besledim.", "I've kept crayfish at home."),
       t(
-        "Cambridge'de kas hareketini hidrolikle taklit eden bir biyonik kol yaptım.",
-        "At Cambridge I built a bionic arm that mimics muscle movement with hydraulics.",
+        "Evde hasatçı türünde bir karınca kraliçesi besledim.",
+        "I've kept a harvester queen ant at home.",
       ),
       t(
-        "Üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum.",
-        "I've studied digital design at BİLSEM since third grade.",
-      ),
-      t(
-        "İlk robotumu altı yaşımda tek başıma yaptım.",
-        "I built my first robot on my own at the age of six.",
+        "Evde küçük bir timsah yavrusu besledim.",
+        "I've kept a baby crocodile at home.",
       ),
     ],
     lieIndex: 2,
     reveal: t(
-      "İlk ciddi robotum FRC takımıyla oldu. Öncesinde bol bol söküp taktım ama tek başıma değil; robotik benim için hep takım işi.",
-      "My first serious robot came with the FRC team. Before that I took plenty of things apart, but never alone; robotics has always been teamwork for me.",
+      "Kertenkelelere bayılırım ama timsah fazla olurdu. Kerevit ve karınca kraliçesi gerçek, ikisi de bir süre evde debelendi.",
+      "I love lizards, but a crocodile would be too much. The crayfish and the queen ant are real, both lived at my place for a while.",
     ),
   },
   {
     claims: [
       t(
-        "TEKNOFEST'te fırlattığımız roket 10.000 fitin üzerine çıktı.",
-        "Our TEKNOFEST rocket climbed past 10,000 feet.",
+        "Akvaryumlara ve kertenkelelere bayılırım.",
+        "I love aquariums and lizards.",
       ),
       t(
-        "Roket projesinde tasarımdan fırlatmaya kadar her aşamada yer aldım.",
-        "I was involved at every stage of the rocket project, from design to launch.",
+        "Bahçeli bir evim olsa mutlaka köpek beslerdim.",
+        "If I had a house with a garden, I'd definitely get a dog.",
       ),
-      t(
-        "FRC'de bir takımda kaptan, başka bir takımda sürücüyüm.",
-        "In FRC I'm a captain on one team and a driver on another.",
-      ),
+      t("Evde şu an bir papağanım var.", "I currently have a parrot at home."),
     ],
-    lieIndex: 0,
+    lieIndex: 2,
     reveal: t(
-      "Kategorimiz A1'di, hedef en az 4.000 fit. 10.000 fit bambaşka bir lig ve o ligde henüz değiliz.",
-      "We were in the A1 category, targeting a 4,000 ft minimum. 10,000 feet is a different league, and we are not in it yet.",
+      "Kedi de severim ama şu an evde papağan yok. Bahçeli ev olursa sırada köpek var.",
+      "I like cats too, but there's no parrot at home right now. If I get a garden, a dog is next.",
     ),
   },
   {
     claims: [
       t(
-        "Yüzme takımında Türkiye şampiyonluğu kazandım.",
-        "I won a national championship with the swimming team.",
+        "Hedefim teknik altyapı okuyup işletmeyle birleştirmek.",
+        "My goal is to study technical infrastructure and combine it with business.",
       ),
       t(
-        "LGS'ye hazırlanan öğrencilere mentorluk yapıyorum.",
-        "I mentor students preparing for the LGS exam.",
+        "Amacım dünyanın sorunlarına kendi çözümlerimi geliştirmek.",
+        "My aim is to develop my own solutions to the world's problems.",
       ),
       t(
-        "Bir maratonda kanser tedavisi gören çocuklar için bağış topladım.",
-        "I collected donations for children in cancer treatment at a marathon.",
+        "Mezun olunca girişim kurmayı hiç düşünmüyorum.",
+        "After graduating I have zero interest in starting a company.",
       ),
     ],
-    lieIndex: 0,
+    lieIndex: 2,
     reveal: t(
-      "İki yıl okul yüzme takımındaydım ve okul yarışlarında yüzdüm. Şampiyonluk kısmı biraz fazla iddialı olurdu.",
-      "I was on the school swimming team for two years and competed in school meets. The championship part would be overselling it.",
+      "Tam tersi: Solvenix zaten bir girişim denemesi. Asıl hedefim teknik bilgiyi işe, işi de çözüme çevirmek.",
+      "Quite the opposite: Solvenix is already a startup attempt. My real goal is turning technical knowledge into products, and products into solutions.",
     ),
   },
 ];

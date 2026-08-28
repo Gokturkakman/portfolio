@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Command, Menu, Moon, Sun, X, Sparkles } from "lucide-react";
 import { useApp } from "@/lib/app-state";
 import { identity, ui } from "@/content/profile";
-import { Magnetic } from "./motion-primitives";
 
 const LINKS = [
   { id: "about", label: ui.nav.about },
@@ -141,17 +140,6 @@ export default function Nav() {
                 <Sun size={14} strokeWidth={1.75} />
               )}
             </button>
-
-            {/* Asistan */}
-            <Magnetic strength={0.2} className="hidden sm:block">
-              <button
-                onClick={() => setChatOpen(true)}
-                className="flex items-center gap-1.5 rounded-lg bg-fg px-3 py-1.5 text-[12px] font-medium text-bg transition-transform duration-200 hover:scale-[1.03]"
-              >
-                <Sparkles size={12} strokeWidth={2} />
-                {tr(ui.hero.ctaAlt)}
-              </button>
-            </Magnetic>
 
             {/* Mobil menü */}
             <button
