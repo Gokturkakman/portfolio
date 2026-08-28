@@ -29,7 +29,7 @@ type Particle = {
 };
 
 const MAX_PARTICLES = 6000;
-const POINTER_RADIUS = 130;
+const POINTER_RADIUS = 90;
 /** İtme kuvveti: yüksek tutmak parçacıkları savurup ismi okunmaz yapıyor. */
 const POINTER_FORCE = 210;
 /** Tek karede eklenebilecek en büyük hız; savrulmayı sınırlar. */
@@ -90,7 +90,9 @@ export default function ParticleName({
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Örnekleme için ayrı, küçük bir canvas kullanıyoruz: piksel okuma pahalı.
-      const sampleScale = width > 900 ? 0.5 : 0.72;
+      // Mobilde h1 zaten küçük olduğundan ham piksel sayısı düşük: burada
+      // düşük ölçek kullanmak ismi seyrek/okunaksız parçacıklara düşürüyordu.
+      const sampleScale = width > 900 ? 0.5 : 1;
       const sw = Math.max(1, Math.floor(width * sampleScale));
       const sh = Math.max(1, Math.floor(height * sampleScale));
 
@@ -123,7 +125,7 @@ export default function ParticleName({
 
       // Yoğunluğu parçacık bütçesine göre ayarla
       const targets: { x: number; y: number }[] = [];
-      let step = width > 900 ? 2 : 3;
+      let step = 2;
       for (let attempt = 0; attempt < 6; attempt++) {
         targets.length = 0;
         for (let y = 0; y < sh; y += step) {

@@ -506,14 +506,6 @@ export const ui = {
     ctaAlt: t("Bana beni sor", "Ask me about me"),
     hint: t("İmlecini üstünde gezdir", "Move your cursor across it"),
   },
-  /** Sağdaki Odysseus şeridinde, kaydırırken bölüme göre değişen etiket. */
-  odyssey: {
-    sail: t("Açık deniz", "Open sea"),
-    battle: t("Kyklops", "The Cyclops"),
-    island: t("Ada yolu", "Island path"),
-    sirens: t("Sirenler", "The Sirens"),
-    arrival: t("Ithaka", "Ithaca"),
-  },
   sections: {
     about: t("Hakkımda", "About"),
     work: t("Projeler", "Projects"),

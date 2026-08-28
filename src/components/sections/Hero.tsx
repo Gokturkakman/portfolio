@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowDown, Sparkles } from "lucide-react";
 import ParticleName from "@/components/ParticleName";
 import { Magnetic } from "@/components/motion-primitives";
@@ -33,9 +34,24 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-[92rem] px-[var(--gutter)]">
+        {/* Portre: köşede, çerçeveli */}
+        <div
+          className="intro surface absolute right-[var(--gutter)] top-0 h-14 w-14 overflow-hidden rounded-2xl shadow-[0_8px_32px_-8px_var(--glow)] sm:h-20 sm:w-20 lg:h-24 lg:w-24"
+          style={step(0)}
+        >
+          <Image
+            src="/portrait.jpg"
+            alt={identity.name}
+            fill
+            sizes="(min-width: 1024px) 6rem, (min-width: 640px) 5rem, 3.5rem"
+            className="object-cover"
+            priority
+          />
+        </div>
+
         {/* Üst satır: ünvan + konum */}
         <div
-          className="intro mb-8 flex flex-wrap items-center gap-x-4 gap-y-2"
+          className="intro mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 pr-16 sm:pr-24 lg:pr-28"
           style={step(0)}
         >
           <span className="text-eyebrow">{tr(identity.role)}</span>
