@@ -266,8 +266,8 @@ export const timeline: Milestone[] = [
     title: t("IB Diploma Adayı", "IB Diploma Candidate"),
     org: t("The Koç School", "The Koç School"),
     body: t(
-      "İleri seviye: Fizik, Matematik, İşletme. Ortalama 95/100, aralıksız Akademik Yüksek Onur.",
-      "Higher level: Physics, Maths, Business Management. 95/100 average, uninterrupted Academic High Honors.",
+      "İleri seviye: Fizik, Matematik, İşletme. Ortalama 95/100.",
+      "Higher level: Physics, Maths, Business Management. 95/100 average.",
     ),
   },
   {
