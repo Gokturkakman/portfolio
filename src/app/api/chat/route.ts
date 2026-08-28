@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
  * gerekmiyor, sadece dakika/gün başına bir istek sınırı var.
  * İstersen .env üzerinden başka bir modele geçebilirsin.
  */
-const MODEL = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
+const MODEL = process.env.GEMINI_MODEL ?? "gemini-3.6-flash";
 
 const MAX_MESSAGES = 24;
 const MAX_CHARS = 1200;
