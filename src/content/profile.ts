@@ -115,6 +115,20 @@ export const socials: Social[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
+/*  LINKEDIN GÖNDERİLERİ                                                       */
+/* -------------------------------------------------------------------------- */
+
+/** İletişim bölümündeki yatay şeritte gösterilen gömülü LinkedIn gönderileri. */
+export const linkedinPosts: { urn: string; height: number }[] = [
+  { urn: "urn:li:ugcPost:7496309705905147904", height: 967 },
+  { urn: "urn:li:share:7493326165621895169", height: 645 },
+  { urn: "urn:li:share:7493652554812284928", height: 645 },
+  { urn: "urn:li:ugcPost:7491936860898926594", height: 567 },
+  { urn: "urn:li:share:7490424878542536704", height: 670 },
+  { urn: "urn:li:share:7491068911619325952", height: 489 },
+];
+
+/* -------------------------------------------------------------------------- */
 /*  HAKKIMDA                                                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -491,6 +505,14 @@ export const ui = {
     cta: t("Projelere bak", "See the projects"),
     ctaAlt: t("Bana beni sor", "Ask me about me"),
     hint: t("İmlecini üstünde gezdir", "Move your cursor across it"),
+  },
+  /** Sağdaki Odysseus şeridinde, kaydırırken bölüme göre değişen etiket. */
+  odyssey: {
+    sail: t("Açık deniz", "Open sea"),
+    battle: t("Kyklops", "The Cyclops"),
+    island: t("Ada yolu", "Island path"),
+    sirens: t("Sirenler", "The Sirens"),
+    arrival: t("Ithaka", "Ithaca"),
   },
   sections: {
     about: t("Hakkımda", "About"),

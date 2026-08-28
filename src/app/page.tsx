@@ -7,6 +7,7 @@ import Play from "@/components/sections/Play";
 import Contact from "@/components/sections/Contact";
 import ChatDock from "@/components/ChatDock";
 import CommandPalette from "@/components/CommandPalette";
+import OdysseyRail from "@/components/OdysseyRail";
 import { Cursor, ScrollProgress } from "@/components/motion-primitives";
 
 export default function Home() {
@@ -15,8 +16,9 @@ export default function Home() {
       <ScrollProgress />
       <Cursor />
       <Nav />
+      <OdysseyRail />
 
-      <main>
+      <main className="lg:pr-[150px]">
         <Hero />
         <About />
         <Work />

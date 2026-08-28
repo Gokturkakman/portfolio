@@ -5,7 +5,7 @@ import { ArrowUp, ArrowUpRight, Check, Copy } from "lucide-react";
 import { Section, SectionHeader } from "@/components/Section";
 import { Magnetic, Reveal } from "@/components/motion-primitives";
 import { useApp } from "@/lib/app-state";
-import { identity, socials, ui } from "@/content/profile";
+import { identity, linkedinPosts, socials, ui } from "@/content/profile";
 
 export default function Contact() {
   const { tr } = useApp();
@@ -104,6 +104,32 @@ export default function Contact() {
               </li>
             ))}
           </ul>
+        </Reveal>
+
+        <Reveal delay={0.18}>
+          <div className="mt-16">
+            <h3 className="text-eyebrow mb-5">
+              {tr({ tr: "LinkedIn'den", en: "From LinkedIn" })}
+            </h3>
+            <div className="flex gap-4 overflow-x-auto pb-2 [scrollbar-width:thin] snap-x snap-proximity">
+              {linkedinPosts.map((p) => (
+                <div
+                  key={p.urn}
+                  className="w-[320px] shrink-0 snap-start overflow-hidden rounded-2xl border border-line"
+                >
+                  <iframe
+                    src={`https://www.linkedin.com/embed/feed/update/${p.urn}?collapsed=1`}
+                    height={p.height}
+                    width="100%"
+                    loading="lazy"
+                    allowFullScreen
+                    title="LinkedIn gönderisi"
+                    className="block border-0"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </Reveal>
       </Section>
       </div>
