@@ -50,7 +50,7 @@ export default function Hero() {
             text={identity.name}
             className="h-[22vw] max-h-[15rem] min-h-[5.5rem] w-full"
           />
-          <span className="pointer-events-none absolute -bottom-1 right-0 hidden text-[10px] text-fg-faint md:block">
+          <span className="pointer-events-none absolute -bottom-1 right-0 hidden text-[10px] text-fg-faint md:block lg:hidden">
             {tr(ui.hero.hint)}
           </span>
         </div>
@@ -106,21 +106,21 @@ export default function Hero() {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Portre: sağdaki boş alanda, büyük */}
-          <div
-            className="intro surface absolute right-12 top-1/2 hidden aspect-square w-64 -translate-y-1/2 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block xl:right-16 xl:w-80"
-            style={step(1)}
-          >
-            <Image
-              src="/portrait.jpg"
-              alt={identity.name}
-              fill
-              sizes="(min-width: 1280px) 20rem, 16rem"
-              className="scale-110 object-cover object-[46%_38%]"
-              priority
-            />
-          </div>
+        {/* Portre: sağdaki boş alan boyunca, isim altından buton sırasına kadar */}
+        <div
+          className="intro surface absolute right-12 top-24 bottom-0 hidden w-56 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block xl:right-16 xl:w-64"
+          style={step(1)}
+        >
+          <Image
+            src="/portrait.jpg"
+            alt={identity.name}
+            fill
+            sizes="(min-width: 1280px) 16rem, 14rem"
+            className="scale-110 object-cover object-[46%_30%]"
+            priority
+          />
         </div>
       </div>
 
