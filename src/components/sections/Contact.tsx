@@ -23,6 +23,22 @@ export default function Contact() {
 
   return (
     <>
+      {/* Kapanış bölümü kağıda döner: sayfa boyunca aynı is-siyah yoğunlukta
+          kalmak yerine, son eylem burada tek bir kontrast molasıyla öne çıkıyor. */}
+      <div
+        className="bg-bg text-fg"
+        style={
+          {
+            "--bg": "var(--paper)",
+            "--bg-raised": "#fffdf8",
+            "--fg": "var(--ink-000)",
+            "--fg-dim": "#5c5349",
+            "--fg-faint": "#8d8377",
+            "--line": "rgb(23 19 15 / 0.1)",
+            "--line-strong": "rgb(23 19 15 / 0.19)",
+          } as React.CSSProperties
+        }
+      >
       <Section id="contact" className="pb-16 sm:pb-20">
         <SectionHeader
           index="05"
@@ -90,6 +106,7 @@ export default function Contact() {
           </ul>
         </Reveal>
       </Section>
+      </div>
 
       {/* ------------------------------------------------------------------ */}
       <footer className="border-t border-line">
