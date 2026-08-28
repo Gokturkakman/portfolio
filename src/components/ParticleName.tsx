@@ -182,7 +182,6 @@ export default function ParticleName({
       }
       if (sum / n > CONVERGED_PX) return;
       handedOff = true;
-      wrap.classList.add("particles-live");
     };
 
     const draw = (now: number) => {
@@ -250,10 +249,7 @@ export default function ParticleName({
       }
       ctx.globalAlpha = 1;
       // Statik çizimde parçacıklar zaten hedeflerinde
-      if (particles.length) {
-        handedOff = true;
-        wrap.classList.add("particles-live");
-      }
+      if (particles.length) handedOff = true;
     };
 
     const onPointerMove = (e: PointerEvent) => {
@@ -266,6 +262,17 @@ export default function ParticleName({
       pointer.active = false;
       pointer.x = -9999;
       pointer.y = -9999;
+    };
+    /**
+     * Dokunmatikte "hover" yok: parmak değmeden itme olmaz, bu normal.
+     * Ama varsayılan `touch-action` yüzünden tarayıcı parmağı sürüklemeyi
+     * kaydırma jesti sanıp `pointermove` akışını daha başlamadan kesiyor.
+     * Canvas'a `touch-action: none` verip parmağı canvas'a yakalıyoruz;
+     * kaldırınca (`pointerup`/`pointercancel`) itme de bitiyor.
+     */
+    const onPointerDown = (e: PointerEvent) => {
+      canvas.setPointerCapture(e.pointerId);
+      onPointerMove(e);
     };
 
     let resizeTimer: number | undefined;
@@ -302,7 +309,10 @@ export default function ParticleName({
     } else {
       raf = requestAnimationFrame(draw);
       window.addEventListener("pointermove", onPointerMove, { passive: true });
+      canvas.addEventListener("pointerdown", onPointerDown);
       canvas.addEventListener("pointerleave", onPointerLeave);
+      canvas.addEventListener("pointerup", onPointerLeave);
+      canvas.addEventListener("pointercancel", onPointerLeave);
     }
 
     window.addEventListener("resize", onResize);
@@ -327,7 +337,10 @@ export default function ParticleName({
       window.clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
+      canvas.removeEventListener("pointerdown", onPointerDown);
       canvas.removeEventListener("pointerleave", onPointerLeave);
+      canvas.removeEventListener("pointerup", onPointerLeave);
+      canvas.removeEventListener("pointercancel", onPointerLeave);
       document.removeEventListener("visibilitychange", onVisibility);
       themeObserver.disconnect();
     };
@@ -336,16 +349,22 @@ export default function ParticleName({
   return (
     <div ref={wrapRef} className={`relative ${className}`}>
       {/*
-        Gerçek başlık. Varsayılan olarak GÖRÜNÜR: JS çalışmazsa, canvas
-        desteklenmezse ya da bir paket yüklenemezse ziyaretçi yine ismi görür.
-        Parçacıklar devreye girdiğinde `particles-live` sınıfı bunu gizliyor.
+        Ekran okuyucular ve arama motorları için gerçek başlık: baştan
+        görsel olarak gizli, hiç yanıp sönmüyor. JS hiç çalışmazsa
+        (script kapalı, paket yüklenemedi) aşağıdaki <noscript> devreye
+        girip ismi düz metin olarak gösteriyor.
       */}
-      <h1 className="text-display absolute inset-0 flex items-center text-[clamp(2.75rem,11vw,9rem)]">
+      <h1 className="name-visually-hidden text-display absolute inset-0 flex items-center text-[clamp(2.75rem,11vw,9rem)]">
         {text}
       </h1>
+      <noscript>
+        <h1 className="text-display absolute inset-0 flex items-center text-[clamp(2.75rem,11vw,9rem)]">
+          {text}
+        </h1>
+      </noscript>
       <canvas
         ref={canvasRef}
-        className="relative block h-full w-full"
+        className="relative block h-full w-full touch-none"
         aria-hidden
       />
     </div>

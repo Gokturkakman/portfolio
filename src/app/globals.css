@@ -226,9 +226,9 @@ body {
    Animasyonlar
    ========================================================================== */
 
-/* Parçacık hero'nun düz metin yedeği. Parçacıklar çizilmeye başlayınca
-   `particles-live` eklenir ve başlık yalnızca ekran okuyucular için kalır. */
-.particles-live h1 {
+/* Parçacık hero'nun gerçek başlığı: baştan beri ekran okuyucu için,
+   hiçbir zaman görsel olarak gösterilmiyor (bkz. ParticleName.tsx). */
+.name-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
