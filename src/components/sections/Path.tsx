@@ -56,7 +56,7 @@ export default function Path() {
         <Reveal delay={0.1}>
           <div className="mt-20 border-t border-line pt-12">
             <h3 className="text-eyebrow mb-8">{tr(ui.sections.service)}</h3>
-            <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+            <ul className="divide-y divide-line overflow-hidden rounded-2xl border border-line">
               {service.map((s, i) => (
                 <li key={i} className="flex flex-col gap-2 bg-bg p-6">
                   <span className="font-[family-name:var(--font-mono)] text-[11px] tracking-widest text-fg-faint">

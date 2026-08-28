@@ -171,6 +171,22 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "arc-agi",
+    title: t("ARC-AGI-3 Benchmark", "ARC-AGI-3 Benchmark"),
+    year: "2026",
+    summary: t(
+      "Exposure AI Academy'de bir takımla ARC-AGI-3 benchmark'ında dünya genelinde 2167 takım arasından 121. sıra.",
+      "With a team at Exposure AI Academy, ranked 121st worldwide out of 2,167 teams on the ARC-AGI-3 benchmark.",
+    ),
+    detail: t(
+      "Exposure AI Academy'nin ileri seviye, AGI odaklı iki haftalık programında Ali Nebi Dal, Eymen Oğuz Ergün, Toprak Gündoğdu ve Kuzey Torlak ile birlikte çalıştım. Takımca ARC-AGI-3 benchmark'ında 1.28 puan alıp 2167 takım arasında dünya genelinde 121. sıraya girdik.",
+      "In Exposure AI Academy's advanced, AGI-focused two-week program, I worked with Ali Nebi Dal, Eymen Oğuz Ergün, Toprak Gündoğdu and Kuzey Torlak. As a team we scored 1.28 on the ARC-AGI-3 benchmark, ranking 121st worldwide out of 2,167 teams.",
+    ),
+    tags: [t("Yapay zekâ", "AI"), t("AGI", "AGI"), t("Takım projesi", "Team project")],
+    accent: ["#5B6FE8", "#9AA8FF"],
+    featured: true,
+  },
+  {
     id: "social-app",
     title: t("Solvenix", "Solvenix"),
     year: "2025→",
@@ -268,6 +284,15 @@ export const timeline: Milestone[] = [
     body: t(
       "İleri seviye: Fizik, Matematik, İşletme. Ortalama 95/100.",
       "Higher level: Physics, Maths, Business Management. 95/100 average.",
+    ),
+  },
+  {
+    period: t("Ağustos 2026", "August 2026"),
+    title: t("Exposure AI Academy · İleri Seviye", "Exposure AI Academy · Advanced Track"),
+    org: t("Exposure AI Academy", "Exposure AI Academy"),
+    body: t(
+      "İki haftalık yoğun program: kodlama, ürün geliştirme ve AGI odaklı yapay zekâ projeleri. Takım olarak ARC-AGI-3 benchmark'ında 1.28 puanla 2167 takım arasında dünya genelinde 121. sıraya girdik.",
+      "A two-week intensive program: coding, product development and AGI-focused AI projects. As a team we scored 1.28 on the ARC-AGI-3 benchmark, ranking 121st worldwide out of 2,167 teams.",
     ),
   },
   {
@@ -468,6 +493,9 @@ export const assistantNotes = `
   Lideri oldu); Aydos Robotics'te sürücü. Koordinasyon tarafını robotun
   kendisi kadar ciddiye alır.
 - Solvenix adlı sosyal ağ uygulamasının kurucu ortağı (Haziran 2025'ten beri).
+- Ağustos 2026'da Exposure AI Academy'nin ileri seviye, AGI odaklı iki haftalık
+  programına katıldı. Takımca ARC-AGI-3 benchmark'ında 1.28 puanla 2167 takım
+  arasında dünya genelinde 121. sıraya girdiler.
 - TÜBİTAK Fizik Olimpiyatları'na hazırlanıyor (kinematik, termodinamik,
   elektromanyetizma, modern fizik).
 - Galatasaray 100. Yıl Interact Kulübü'nde aktif üye ve başkan adayı.
