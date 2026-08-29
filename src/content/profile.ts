@@ -143,7 +143,7 @@ export const about = {
       k: t("İleri seviye", "Higher level"),
       v: t("Fizik, Matematik, İşletme", "Physics, Maths, Business"),
     },
-    { k: t("Diller", "Languages"), v: t("Türkçe, İngilizce (C1)", "Turkish, English (C1)") },
+    { k: t("Diller", "Languages"), v: t("Türkçe, İngilizce", "Turkish, English") },
     {
       k: t("İlgi alanları", "Interests"),
       v: t("Biyomedikal, robotik, YZ", "Biomedical, robotics, AI"),
