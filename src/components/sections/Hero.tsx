@@ -110,7 +110,7 @@ export default function Hero() {
 
           {/* Portre: yandaki metinle üst çizgisi hizalı, yatay dikdörtgen */}
           <div
-            className="intro surface absolute right-0 top-0 hidden w-80 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block lg:h-56 xl:h-64 xl:w-[30rem]"
+            className="intro surface absolute right-0 top-0 hidden w-80 overflow-hidden rounded-3xl shadow-[0_20px_60px_-14px_var(--glow)] lg:block lg:h-64 xl:h-72 xl:w-[30rem]"
             style={step(1)}
           >
             <Image
@@ -118,7 +118,7 @@ export default function Hero() {
               alt={identity.name}
               fill
               sizes="(min-width: 1280px) 30rem, 20rem"
-              className="scale-125 object-cover object-[50%_48%]"
+              className="scale-125 object-cover object-[50%_54%]"
               priority
             />
           </div>
