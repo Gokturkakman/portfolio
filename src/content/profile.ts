@@ -28,8 +28,8 @@ export const identity = {
 
   /** GÖZDEN GEÇİR: Hero'nun altındaki tek cümlelik iddia. Sitenin en önemli cümlesi. */
   tagline: t(
-    "Her alanda yeni bir şey öğrenmeye çalışıyorum ve asıl keyfi o süreçten alıyorum. Robotik, roket, kod, tasarım: hepsi aynı merakın farklı halleri.",
-    "I try to learn something new in every field, and the process itself is the part I enjoy. Robotics, rockets, code, design: different shapes of the same curiosity.",
+    "Her alanda yeni bir şey öğrenmeye çalışıyorum ve asıl keyfi o süreçten alıyorum. Robotik, kod, tasarım: hepsi aynı merakın farklı halleri.",
+    "I try to learn something new in every field, and the process itself is the part I enjoy. Robotics, code, design: different shapes of the same curiosity.",
   ),
 
   location: t("İstanbul, Türkiye", "Istanbul, Türkiye"),
@@ -128,8 +128,8 @@ export const about = {
       "I study at The Koç School in Istanbul as an IB Diploma candidate. I take physics, maths and business at higher level. But I only feel like I have actually learned something once I have tried to build it myself.",
     ),
     t(
-      "O yüzden fırsat buldukça yeni bir alana giriyorum. Cambridge'de hidrolikle çalışan bir biyonik kol prototipi yaptım, Arduino ile çizgi izleyen bir robot programladım. TEKNOFEST'te roket takımındaydım, RAMs Robotics'te kulüp başkanıyım, üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum. Şu an Solvenix adında bir sosyal ağ uygulaması geliştiriyorum.",
-      "So whenever I get the chance, I step into a new field. At Cambridge I built a hydraulic bionic arm prototype and programmed a line-tracking robot with Arduino. I was on the rocket team at TEKNOFEST, I'm club president of RAMs Robotics, and I have studied digital design at BİLSEM since third grade. Right now I am building a social networking app called Solvenix.",
+      "O yüzden fırsat buldukça yeni bir alana giriyorum. Cambridge'de hidrolikle çalışan bir biyonik kol prototipi yaptım, Arduino ile çizgi izleyen bir robot programladım. RAMs Robotics'te kulüp başkanıyım, üçüncü sınıftan beri BİLSEM'de dijital tasarım okuyorum. Şu an Solvenix adında bir sosyal ağ uygulaması geliştiriyorum.",
+      "So whenever I get the chance, I step into a new field. At Cambridge I built a hydraulic bionic arm prototype and programmed a line-tracking robot with Arduino. I'm club president of RAMs Robotics, and I have studied digital design at BİLSEM since third grade. Right now I am building a social networking app called Solvenix.",
     ),
     t(
       "Hepsinin ortak noktası sonuç değil, süreç. Yeni bir konuya sıfırdan başlamanın, bir yerde takılıp orada debelenmenin ve sonunda işin nasıl yürüdüğünü anlamanın keyfi bende hep aynı. Kendimi tek bir alanla tanımlamamamın sebebi de bu; şu an en çok vaktimi biyomedikal mühendislik, robotik ve yapay zekâya ayırıyorum.",
@@ -248,21 +248,6 @@ export const projects: Project[] = [
     tags: [t("FRC", "FRC"), t("Mekanik tasarım", "Mechanical design"), t("Kulüp Başkanlığı", "Club leadership")],
     accent: ["#C25F14", "#F2A765"],
   },
-  {
-    id: "teknofest",
-    title: t("TEKNOFEST Roketi", "TEKNOFEST Rocket"),
-    year: "2024",
-    summary: t(
-      "A1 lise kategorisi: en az 4.000 ft irtifa hedefiyle tasarım, üretim ve fırlatma.",
-      "A1 high-school category: design, build and launch targeting a 4,000 ft minimum altitude.",
-    ),
-    detail: t(
-      "Takım üyesi olarak projenin tasarımdan fırlatmaya kadar tüm yaşam döngüsüne katkı verdim. Bir şeyin tek bir denemede çalışmak zorunda olması, kâğıt üstündeki hesabı ciddiye almayı öğretiyor.",
-      "As a team member I contributed across the full project lifecycle, from design to launch. When something has to work on the first try, you start taking the paper calculations seriously.",
-    ),
-    tags: [t("Roketçilik", "Rocketry"), t("Takım projesi", "Team project")],
-    accent: ["#4A6FA5", "#8FB3DC"],
-  },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -371,6 +356,15 @@ export const service: {
   org: Localized;
   body: Localized;
 }[] = [
+  {
+    period: t("2024'ten beri", "Since 2024"),
+    title: t("Başkan", "President"),
+    org: t("Galatasaray 100. Yıl Interact Kulübü", "Galatasaray Interact 100th Year Club"),
+    body: t(
+      "Kulübün başkanıyım; hayır işleri ve network odaklı projeler yürütüyoruz.",
+      "President of the club; we run charity and networking-focused projects.",
+    ),
+  },
   {
     period: t("2024'ten beri", "Since 2024"),
     title: t("Mentor", "Mentor"),
@@ -498,7 +492,8 @@ export const assistantNotes = `
   arasında dünya genelinde 121. sıraya girdiler.
 - TÜBİTAK Fizik Olimpiyatları'na hazırlanıyor (kinematik, termodinamik,
   elektromanyetizma, modern fizik).
-- Galatasaray 100. Yıl Interact Kulübü'nde aktif üye ve başkan adayı.
+- Galatasaray 100. Yıl Interact Kulübü'nün başkanı; hayır ve network odaklı
+  projeler yürütüyor.
 - Yaş küçük diye deneyimi küçümsetme; ama olmayan bir şeyi de büyütme.
 `.trim();
 
