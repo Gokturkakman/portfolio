@@ -236,14 +236,14 @@ export const projects: Project[] = [
   {
     id: "frc",
     title: t("RAMs Robotics #7729", "RAMs Robotics #7729"),
-    year: "2024-2026",
+    year: "2024→",
     summary: t(
-      "RAMs Robotics #7729'da kulüp başkanı; Aydos Robotics'te sürücü.",
-      "Club president at RAMs Robotics #7729; driver at Aydos Robotics.",
+      "RAMs Robotics #7729'da kulüp başkanı.",
+      "Club president at RAMs Robotics #7729.",
     ),
     detail: t(
-      "RAMs Robotics'e üye olarak başladım, sırasıyla Mekanik Kaptan, Takım Lideri ve şu an Kulüp Başkanı oldum. CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım; mekanik tasarım ve üretim stratejisinin yanında yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum. Ayrıca Aydos Robotics'te sürücüyüm. İşin zor kısmı robot değil, birden fazla takımı aynı takvimde tutmak.",
-      "I started as a member at RAMs Robotics, then became Mechanical Captain, Team Lead, and now Club President. I competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons; besides leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. I'm also a driver at Aydos Robotics. The hard part is not the robot, it's keeping more than one team on the same schedule.",
+      "RAMs Robotics'e üye olarak başladım, sırasıyla Mekanik Kaptan, Takım Lideri ve şu an Kulüp Başkanı oldum. CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım; mekanik tasarım ve üretim stratejisinin yanında yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum. İşin zor kısmı robot değil, birden fazla alt takımı aynı takvimde tutmak.",
+      "I started as a member at RAMs Robotics, then became Mechanical Captain, Team Lead, and now Club President. I competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons; besides leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. The hard part is not the robot, it's keeping multiple sub-teams on the same schedule.",
     ),
     tags: [t("FRC", "FRC"), t("Mekanik tasarım", "Mechanical design"), t("Kulüp Başkanlığı", "Club leadership")],
     accent: ["#C25F14", "#F2A765"],
@@ -278,6 +278,15 @@ export const timeline: Milestone[] = [
     body: t(
       "İki haftalık yoğun program: kodlama, ürün geliştirme ve AGI odaklı yapay zekâ projeleri. Takım olarak ARC-AGI-3 benchmark'ında 1.28 puanla 2167 takım arasında dünya genelinde 121. sıraya girdik.",
       "A two-week intensive program: coding, product development and AGI-focused AI projects. As a team we scored 1.28 on the ARC-AGI-3 benchmark, ranking 121st worldwide out of 2,167 teams.",
+    ),
+  },
+  {
+    period: t("2023-2026", "2023-2026"),
+    title: t("Sürücü", "Driver"),
+    org: t("Aydos Robotics", "Aydos Robotics"),
+    body: t(
+      "Üç sezon boyunca takımın sürücüsüydüm. Bu rol artık sona erdi.",
+      "Drove for the team across three seasons. This role has now ended.",
     ),
   },
   {
@@ -483,9 +492,11 @@ export const assistantNotes = `
 - Kendini "hayat boyu öğrenici" olarak tanımlar; tek bir alana kilitlenmeyi sevmez.
 - En çok ilgilendiği alanlar: biyomedikal mühendislik, robotik, yapay zekâ/makine
   öğrenmesi, giyilebilir teknoloji, sürdürülebilir teknoloji, girişimcilik.
-- RAMs Robotics #7729'da kulüp başkanı (önce Mekanik Kaptan, sonra Takım
-  Lideri oldu); Aydos Robotics'te sürücü. Koordinasyon tarafını robotun
+- RAMs Robotics #7729'da kulüp başkanı, 2024'ten beri devam ediyor (önce
+  Mekanik Kaptan, sonra Takım Lideri oldu). Koordinasyon tarafını robotun
   kendisi kadar ciddiye alır.
+- Aydos Robotics'te 2023-2026 arası üç sezon sürücülük yaptı; bu rol artık
+  sona erdi.
 - Solvenix adlı sosyal ağ uygulamasının kurucu ortağı (Haziran 2025'ten beri).
 - Ağustos 2026'da Exposure AI Academy'nin ileri seviye, AGI odaklı iki haftalık
   programına katıldı. Takımca ARC-AGI-3 benchmark'ında 1.28 puanla 2167 takım

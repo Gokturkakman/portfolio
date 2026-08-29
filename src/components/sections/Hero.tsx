@@ -118,7 +118,7 @@ export default function Hero() {
               alt={identity.name}
               fill
               sizes="(min-width: 1280px) 30rem, 20rem"
-              className="scale-125 object-cover object-[50%_76%]"
+              className="scale-125 object-cover object-[50%_84%]"
               priority
             />
           </div>
