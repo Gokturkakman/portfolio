@@ -233,21 +233,6 @@ export const projects: Project[] = [
     tags: [t("C++", "C++"), t("Arduino", "Arduino"), t("Sensörler", "Sensors")],
     accent: ["#8E5AC8", "#C8A2E8"],
   },
-  {
-    id: "frc",
-    title: t("RAMs Robotics #7729", "RAMs Robotics #7729"),
-    year: "2024→",
-    summary: t(
-      "RAMs Robotics #7729'da kulüp başkanı.",
-      "Club president at RAMs Robotics #7729.",
-    ),
-    detail: t(
-      "RAMs Robotics'e üye olarak başladım, sırasıyla Mekanik Kaptan, Takım Lideri ve şu an Kulüp Başkanı oldum. CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım; mekanik tasarım ve üretim stratejisinin yanında yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum. İşin zor kısmı robot değil, birden fazla alt takımı aynı takvimde tutmak.",
-      "I started as a member at RAMs Robotics, then became Mechanical Captain, Team Lead, and now Club President. I competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons; besides leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams. The hard part is not the robot, it's keeping multiple sub-teams on the same schedule.",
-    ),
-    tags: [t("FRC", "FRC"), t("Mekanik tasarım", "Mechanical design"), t("Kulüp Başkanlığı", "Club leadership")],
-    accent: ["#C25F14", "#F2A765"],
-  },
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -278,6 +263,15 @@ export const timeline: Milestone[] = [
     body: t(
       "İki haftalık yoğun program: kodlama, ürün geliştirme ve AGI odaklı yapay zekâ projeleri. Takım olarak ARC-AGI-3 benchmark'ında 1.28 puanla 2167 takım arasında dünya genelinde 121. sıraya girdik.",
       "A two-week intensive program: coding, product development and AGI-focused AI projects. As a team we scored 1.28 on the ARC-AGI-3 benchmark, ranking 121st worldwide out of 2,167 teams.",
+    ),
+  },
+  {
+    period: t("2024'ten beri", "Since 2024"),
+    title: t("Kulüp Başkanı", "Club President"),
+    org: t("RAMs Robotics #7729", "RAMs Robotics #7729"),
+    body: t(
+      "Üye olarak başladım, sırasıyla Mekanik Kaptan, Takım Lideri ve şu an Kulüp Başkanı oldum. CRESCENDO (2024, Boğaziçi Bölgesel) ve REEFSCAPE (2025, Haliç) sezonlarında yarıştım; mekanik tasarım ve üretim stratejisinin yanında yazılım, elektrik ve mekanik alt takımları arasındaki koordinasyondan sorumluyum.",
+      "Started as a member, then became Mechanical Captain, Team Lead, and now Club President. I competed in the CRESCENDO (2024, Bosphorus Regional) and REEFSCAPE (2025, Haliç) seasons; besides leading mechanical design and fabrication strategy, I coordinate between the programming, electrical and mechanical sub-teams.",
     ),
   },
   {
