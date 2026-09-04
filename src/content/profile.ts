@@ -43,7 +43,7 @@ export const identity = {
   /**
    * CV'deki okul adresi. Kişisel bir adresi tercih edersen değiştir: * okul adresleri mezuniyetten sonra kapanıyor.
    */
-  email: "gokturka2028@stu.koc.k12.tr",
+  email: "gokturkakman@hotmail.com",
 
   /**
    * CV'de telefon numaran var; siteye bilerek konmadı. Açık internete telefon
